@@ -1,26 +1,32 @@
 package org.example;
 
 
+import org.example.account.AccountStatus;
+import org.example.account.Authentication;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Seller {
+
     static ArrayList<Product> Buyed =new ArrayList<>();
     String ProductName,Brand, Model, ProductDescription;
     int Price, Rating, No;
     static  ArrayList<Product> products=new ArrayList<>();
     public void defaultProducts(){
         products.add(new Product("Samsung Galaxy S20", "Samsung", "Galaxy S20", "Samsung Galaxy S20", 9999, 4, 5));
+        products.add(new Product("IPhone 11", "Apple", "iPhone 11", "Apple iPhone 11", 9999, 4, 5));
+        products.add(new Product("IPhone 12", "Apple", "iPhone 12", "Apple iPhone 12", 9999, 4, 5));
     }
     public void gettingStartedSeller(){
-        int op;
+        int option;
         System.out.println("""
                 1 -> View Product
                 2 -> Add Your Own Product
                """);
-        Scanner inp=new Scanner(System.in);
-        op=inp.nextInt();
-        switch (op){
+        Scanner input=new Scanner(System.in);
+        option=input.nextInt();
+        switch (option){
             case 1 -> viewOurProduct();
             case 2 -> addProduct();
             default -> throw new IllegalArgumentException();
@@ -28,13 +34,20 @@ public class Seller {
 
     }
     public void viewOurProduct(){
-    for (Product p:products){
-        System.out.println(p.toString());
+        if(AccountStatus.AccountStatusNote.getStatus()){
+        for (Product product:products){
+        System.out.println(product.toString());
     }
-    new Shopping().getStarted();
+            Shopping.getStarted();
     }
+        else {
+            System.out.println("You are not Logged in \n Please Login to Buy the Product");
+            Shopping.getStarted();
+        }
+    }
+
     public void addProduct(){
-        String op;
+        String option;
         Scanner scanner=new Scanner(System.in);
         System.out.println("Enter the Product Name");
         ProductName=scanner.nextLine();
@@ -54,8 +67,8 @@ public class Seller {
         Product product=new Product(ProductName,Brand,Model,ProductDescription,Price,Rating,No);
         products.add(product);
         System.out.println("Do you want to add more ");
-        op= scanner.nextLine();
-        if(op.equalsIgnoreCase("y")){
+        option= scanner.nextLine();
+        if(option.equalsIgnoreCase("y")){
             addProduct();
         }
         else {
@@ -66,28 +79,36 @@ public class Seller {
     }
     public void viewAndBuy(){
          int i=0;
-        for (Product p:products){
-            System.out.println(i+" -> " +p.toString());
-            i++;
-        }
+         new PrintTable().PrintItems(products);
         BuyProduct();
     }
 
     private void BuyProduct() {
+        if (!AccountStatus.AccountStatusNote.getStatus()){
+            System.out.println("You are not Logged in \n Please Login to Buy the Product");
+            new Authentication().login();
+        }
+        else {
         int l;
         String op;
         Scanner sc=new Scanner(System.in);
         do{
         System.out.println("Choose the Product ");
         l= sc.nextInt();
-        Buyed.add(products.get(l));
+        System.out.println("Choose the Quantity ");
+        int quantity= sc.nextInt();
+        Product product=products.get(l);
+        product.setNo(quantity);
+        Buyed.add(product);
         System.out.println("Do you want to Continue?");
         op=sc.next();
         }while (op.equalsIgnoreCase("y"));
         int total = 0;
+        new PrintTable().PrintItems(Buyed);
         for (Product p:Buyed){
-            total=total+p.Price();
+            total=total+p.getPrice();
         }
         System.out.println("Total Price "+total);
+    }
     }
 }

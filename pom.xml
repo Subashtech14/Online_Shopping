@@ -21,11 +21,13 @@
             <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.jline/jline -->
         <dependency>
             <groupId>org.jline</groupId>
             <artifactId>jline</artifactId>
-            <version>${jline.version}</version>
+            <version>3.23.0</version>
         </dependency>
+
     </dependencies>
 
 </project>
