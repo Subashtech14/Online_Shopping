@@ -2,11 +2,13 @@ package org.example;
 
 import java.util.Scanner;
 
-public class Main {
+public class Shopping {
     public static void main(String[] args) {
-
+        new Seller().defaultProducts();
         getStarted();
     }
+
+
 
     public static void getStarted() {
         int Option;

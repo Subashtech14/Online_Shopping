@@ -9,6 +9,9 @@ public class Seller {
     String ProductName,Brand, Model, ProductDescription;
     int Price, Rating, No;
     static  ArrayList<Product> products=new ArrayList<>();
+    public void defaultProducts(){
+        products.add(new Product("Samsung Galaxy S20", "Samsung", "Galaxy S20", "Samsung Galaxy S20", 9999, 4, 5));
+    }
     public void gettingStartedSeller(){
         int op;
         System.out.println("""
@@ -28,6 +31,7 @@ public class Seller {
     for (Product p:products){
         System.out.println(p.toString());
     }
+    new Shopping().getStarted();
     }
     public void addProduct(){
         String op;
@@ -58,7 +62,7 @@ public class Seller {
             viewOurProduct();
         }
 
-        Main.getStarted();
+        Shopping.getStarted();
     }
     public void viewAndBuy(){
          int i=0;
