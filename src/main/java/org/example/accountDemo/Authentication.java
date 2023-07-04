@@ -13,31 +13,32 @@ public class Authentication {
         account.add(new Account("admin","admin","admin","admin","admin","admin"));
     }
 
-    public  void login(){
+    public  boolean login(){
         Scanner scanner =new Scanner(System.in);
         System.out.println("Enter the UserName");
         String name = scanner.nextLine();
         System.out.println("Enter the Password");
         String password = scanner.nextLine();
+        System.out.println(account);
        for (Account accounts:account){
-           System.out.println("account status"+accounts);
+           System.out.println("account status "+accounts);
            System.out.println(accounts.Username().equals(name) && accounts.Password().equals(password));
            if (accounts.Username().equals(name) && accounts.Password().equals(password)){
-               //System.out.println(accounts.Username()+" "+name+" "+accounts.Password()+" "+password);
+
                System.out.println("Account Logged in Successfully");
                new AccountStatus(name,1);
                if (accounts.Role().equals("Seller") || accounts.Role().equals("admin")){
-                   new Seller().gettingStartedSeller();
+                   return true;
                }
                else {
                    new Seller().viewAndBuy();
                }
 
            }
-           System.out.println("Password Incorrect");
-           Shopping.getStarted();
+
 
        }
+        return false;
     }
 
     public void siginUp() {

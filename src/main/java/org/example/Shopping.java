@@ -33,7 +33,15 @@ static {
         Scanner scanner=new Scanner(System.in);
         Option=scanner.nextInt();
         switch (Option){
-            case 1 -> new Authentication().login();
+            case 1 -> {
+                if(new Authentication().login()){
+                    new Seller().gettingStartedSeller();
+                }
+                else{
+                    System.out.println("Username or Password Incorrect");
+                    new Authentication().login();
+                }
+            }
             case 2 -> new Authentication().siginUp();
             case 3 -> new Seller().viewOurProduct();
             case 4 -> new Seller().viewAndBuy();

@@ -5,25 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bdf80f97-2d1a-4dea-8948-c70810fda250" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Online_Shopping_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/AccountStatic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/PasswordMaskingExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/PasswordMaskingExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Seller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Seller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Shopping.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Shopping.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ValidatorAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ValidatorAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/account/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/accountDemo/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/account/AccountStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/accountDemo/AccountStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/account/Authentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/accountDemo/Authentication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/PrintTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/PrintTable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Product.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Seller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Seller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Shopping.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Shopping.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/ValidatorAccount.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/ValidatorAccount.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/account/AccountStatus$AccountStatusNote.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/account/AccountStatus$AccountStatusNote.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/account/AccountStatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/account/AccountStatus.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/account/Authentication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/account/Authentication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/accountDemo/Authentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/accountDemo/Authentication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
