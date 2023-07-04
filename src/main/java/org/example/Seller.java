@@ -1,15 +1,15 @@
 package org.example;
 
 
-import org.example.account.AccountStatus;
-import org.example.account.Authentication;
+import org.example.accountDemo.AccountStatus;
+import org.example.accountDemo.Authentication;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Seller {
 
-    static ArrayList<Product> Buyed =new ArrayList<>();
+    static ArrayList<Product> BuyedList =new ArrayList<>();
     String ProductName,Brand, Model, ProductDescription;
     int Price, Rating, No;
     static  ArrayList<Product> products=new ArrayList<>();
@@ -78,7 +78,7 @@ public class Seller {
         Shopping.getStarted();
     }
     public void viewAndBuy(){
-         int i=0;
+//         int i=0;
          new PrintTable().PrintItems(products);
         BuyProduct();
     }
@@ -89,24 +89,24 @@ public class Seller {
             new Authentication().login();
         }
         else {
-        int l;
-        String op;
+        int chooseProduct;
+        String option;
         Scanner sc=new Scanner(System.in);
         do{
         System.out.println("Choose the Product ");
-        l= sc.nextInt();
+        chooseProduct= sc.nextInt();
         System.out.println("Choose the Quantity ");
         int quantity= sc.nextInt();
-        Product product=products.get(l);
+        Product product=products.get(chooseProduct);
         product.setNo(quantity);
-        Buyed.add(product);
+        BuyedList.add(product);
         System.out.println("Do you want to Continue?");
-        op=sc.next();
-        }while (op.equalsIgnoreCase("y"));
+        option=sc.next();
+        }while (option.equalsIgnoreCase("y"));
         int total = 0;
-        new PrintTable().PrintItems(Buyed);
-        for (Product p:Buyed){
-            total=total+p.getPrice();
+        new PrintTable().PrintItems(BuyedList);
+        for (Product product:BuyedList){
+            total=total+product.getPrice();
         }
         System.out.println("Total Price "+total);
     }

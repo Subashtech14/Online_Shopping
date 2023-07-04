@@ -1,24 +1,24 @@
 package org.example;
 
-import org.example.account.AccountStatus;
-import org.example.account.Authentication;
+import org.example.accountDemo.AccountStatus;
+import org.example.accountDemo.Authentication;
 
 import java.util.Scanner;
 
 public class Shopping {
     public static void main(String[] args) {
-        callDefault();
+
         getStarted();
     }
 
-    private static void callDefault() {
-        new Seller().defaultProducts();
-        new Authentication().defaultAccount();
-    }
-
+static {
+    new Seller().defaultProducts();
+    new Authentication().defaultAccount();
+}
 
     public static void getStarted() {
         int Option;
+        System.out.println(AccountStatus.AccountStatusNote.getStatus());
         if (!AccountStatus.AccountStatusNote.getStatus()){
             System.out.println("""
                 1 -> Login

@@ -1,4 +1,4 @@
-package org.example.account;
+package org.example.accountDemo;
 
 public class AccountStatus {
     private static String username=null;
@@ -8,7 +8,8 @@ public class AccountStatus {
         AccountStatus.status = status;
     }
     public AccountStatus(){
-
+    AccountStatus.username=null;
+    AccountStatus.status=0;
     }
 
     public static class AccountStatusNote {

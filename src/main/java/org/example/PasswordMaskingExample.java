@@ -1,7 +1,7 @@
 package org.example;
 
 import java.io.Console;
-
+//In Order to mask password, we need to make the .java file to be .jar file so that the system can call the console
 public class PasswordMaskingExample {
     public static void main(String[] args) {
         Console console = System.console();

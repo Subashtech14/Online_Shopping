@@ -1,15 +1,14 @@
-package org.example.account;
+package org.example.accountDemo;
 
 import org.example.Seller;
 import org.example.Shopping;
 import org.example.ValidatorAccount;
-import org.example.account.Account;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Authentication {
-    static ArrayList<Account> account =new ArrayList<Account>();
+    static ArrayList<Account> account = new ArrayList<>();
     public void defaultAccount(){
         account.add(new Account("admin","admin","admin","admin","admin","admin"));
     }
@@ -20,11 +19,14 @@ public class Authentication {
         String name = scanner.nextLine();
         System.out.println("Enter the Password");
         String password = scanner.nextLine();
-       for (Account a:account){
-           if (a.Username().equals(name) && a.Password().equals(password)){
+       for (Account accounts:account){
+           System.out.println("account status"+accounts);
+           System.out.println(accounts.Username().equals(name) && accounts.Password().equals(password));
+           if (accounts.Username().equals(name) && accounts.Password().equals(password)){
+               //System.out.println(accounts.Username()+" "+name+" "+accounts.Password()+" "+password);
                System.out.println("Account Logged in Successfully");
                new AccountStatus(name,1);
-               if (a.Role().equals("Seller") || a.Role().equals("admin")){
+               if (accounts.Role().equals("Seller") || accounts.Role().equals("admin")){
                    new Seller().gettingStartedSeller();
                }
                else {
@@ -32,41 +34,40 @@ public class Authentication {
                }
 
            }
-           else {
-               System.out.println("Username or Password Incorrect ");
-               login();
-           }
+           System.out.println("Password Incorrect");
+           Shopping.getStarted();
+
        }
     }
 
     public void siginUp() {
-
-        Scanner input=new Scanner(System.in);
-
+        Scanner scanner=new Scanner(System.in);
         System.out.println("Enter the User Name ");
-        String username = input.nextLine();
+        String username = scanner.nextLine();
         System.out.println("Enter the Password ");
-        String password1 = input.nextLine();
+        String password1 = scanner.nextLine();
         System.out.println("Enter the Email ");
-        String email = input.nextLine();
+        String email = scanner.nextLine();
         System.out.println("Enter the Phone Number ");
-        String phone_Number = input.nextLine();
+        String phone_Number = scanner.nextLine();
         System.out.println("""
                 Enter the Role 
                 Seller
                 Buyer""");
-        String role = input.nextLine();
+        String role = scanner.nextLine();
         System.out.println("Description ");
-        String description = input.nextLine();
-        ValidatorAccount v=new ValidatorAccount(username, password1, role, description, phone_Number, email);
-        if(v.validate()){
-            Account a=new Account(username, password1, role, description, phone_Number, email);
-            account.add(a);
+        String description = scanner.nextLine();
+        ValidatorAccount validate=new ValidatorAccount(username, password1, role, description, phone_Number, email);
+        if(validate.validate()){
+            System.out.println("Account Added"+account.add(new Account(username, password1, role, description, phone_Number, email)));
             System.out.println("""
                     Account Created Successfully
                     Please Re-Login""");
+            System.out.println(account);
             login();
         }
+        System.out.println("Account is not Created");
+        siginUp();
     }
 
 

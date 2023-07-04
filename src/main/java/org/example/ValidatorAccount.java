@@ -59,7 +59,7 @@ public class ValidatorAccount {
     }
 
     private  boolean phoneNumberValid() {
-        if (Phone_Number.length() ==10){
+        if (Phone_Number.length() == 10 && Phone_Number.matches("[0-9]+")){
             return true;
         }
         System.out.println("Phone number not valid format");

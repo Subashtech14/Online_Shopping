@@ -1,4 +1,4 @@
-package org.example.account;
+package org.example.accountDemo;
 
 public record Account (String Username,String Password,String Role,String Description,String Phone_Number,String Email) {
 
