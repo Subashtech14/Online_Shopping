@@ -1,8 +1,10 @@
-package org.example;
+package com.aspiresys.model;
 
 
-import org.example.accountDemo.AccountStatus;
-import org.example.accountDemo.Authentication;
+import com.aspiresys.view.PrintTable;
+import com.aspiresys.Shopping;
+import com.aspiresys.model.account.AccountStatus;
+import com.aspiresys.authentication.Authentication;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -34,6 +36,7 @@ public class Seller {
 
     }
     public void viewOurProduct(){
+        new PrintTable().PrintItems(products);
         if(AccountStatus.AccountStatusNote.getStatus()){
         for (Product product:products){
         System.out.println(product.toString());
@@ -80,11 +83,16 @@ public class Seller {
     public void viewAndBuy(){
 //         int i=0;
          new PrintTable().PrintItems(products);
+         if (!AccountStatus.AccountStatusNote.getStatus()){
+             System.out.println("Account is not Logged in \n Please Login or Sign Up to Continue");
+             Shopping.getStarted();
+         }else{
         BuyProduct();
+         }
     }
 
     private void BuyProduct() {
-        if (!AccountStatus.AccountStatusNote.getStatus()){
+        if (  AccountStatus.AccountStatusNote.getStatus()){
             System.out.println("You are not Logged in \n Please Login to Buy the Product");
             new Authentication().login();
         }

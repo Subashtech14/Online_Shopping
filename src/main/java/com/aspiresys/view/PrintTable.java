@@ -1,4 +1,6 @@
-package org.example;
+package com.aspiresys.view;
+
+import com.aspiresys.model.Product;
 
 import java.util.ArrayList;
 

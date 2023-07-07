@@ -1,6 +1,4 @@
-package org.example;
-
-import org.example.accountDemo.Account;
+package com.aspiresys.model.account;
 
 import java.util.ArrayList;
 

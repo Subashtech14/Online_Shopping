@@ -1,7 +1,15 @@
-package org.example;
+/*
+Title:Online Shopping System
+Author: Subash M
+Date: 06/07/2023
+Reviewed By:
+Reviewed On:
+*/
+package com.aspiresys;
 
-import org.example.accountDemo.AccountStatus;
-import org.example.accountDemo.Authentication;
+import com.aspiresys.model.Seller;
+import com.aspiresys.model.account.AccountStatus;
+import com.aspiresys.authentication.Authentication;
 
 import java.util.Scanner;
 
@@ -11,14 +19,14 @@ public class Shopping {
         getStarted();
     }
 
-static {
+    static {
     new Seller().defaultProducts();
     new Authentication().defaultAccount();
-}
+    }
 
     public static void getStarted() {
         int Option;
-        System.out.println(AccountStatus.AccountStatusNote.getStatus());
+        //System.out.println(AccountStatus.AccountStatusNote.getStatus());
         if (!AccountStatus.AccountStatusNote.getStatus()){
             System.out.println("""
                 1 -> Login
@@ -51,19 +59,23 @@ static {
                     new Authentication().logout();
                 }
                 else {
-                    System.out.println("""
-                        Selected is not a Valid Option
-                        Please Select Another One
-                        """);
+                    new Authentication().login();
                 }
             }
 
             default -> {
+                try
+                {
                 System.out.println("""
                         Selected is not a Valid Option
                         Please Select Another One
                         """);
                 throw new IllegalArgumentException();
+                }
+                catch (IllegalArgumentException e){
+                    System.out.println(e);
+                    Shopping.getStarted();
+                }
 
             }
         }

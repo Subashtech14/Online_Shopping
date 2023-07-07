@@ -1,4 +1,4 @@
-package org.example;
+package com.aspiresys.model;
 
 public class Product{
         String ProductName, Brand, Model, ProductDescription;

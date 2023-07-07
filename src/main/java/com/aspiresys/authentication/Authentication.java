@@ -1,8 +1,9 @@
-package org.example.accountDemo;
+package com.aspiresys.authentication;
 
-import org.example.Seller;
-import org.example.Shopping;
-import org.example.ValidatorAccount;
+import com.aspiresys.Shopping;
+import com.aspiresys.model.Seller;
+import com.aspiresys.model.account.Account;
+import com.aspiresys.model.account.AccountStatus;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -21,8 +22,8 @@ public class Authentication {
         String password = scanner.nextLine();
         System.out.println(account);
        for (Account accounts:account){
-           System.out.println("account status "+accounts);
-           System.out.println(accounts.Username().equals(name) && accounts.Password().equals(password));
+           //System.out.println("account status "+accounts);
+           //System.out.println(accounts.Username().equals(name) && accounts.Password().equals(password));
            if (accounts.Username().equals(name) && accounts.Password().equals(password)){
 
                System.out.println("Account Logged in Successfully");
@@ -60,11 +61,11 @@ public class Authentication {
         String description = scanner.nextLine();
         ValidatorAccount validate=new ValidatorAccount(username, password1, role, description, phone_Number, email);
         if(validate.validate()){
-            System.out.println("Account Added"+account.add(new Account(username, password1, role, description, phone_Number, email)));
+            //System.out.println("Account Added"+account.add(new Account(username, password1, role, description, phone_Number, email)));
             System.out.println("""
                     Account Created Successfully
                     Please Re-Login""");
-            System.out.println(account);
+            //System.out.println(account);
             login();
         }
         System.out.println("Account is not Created");

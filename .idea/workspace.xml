@@ -6,8 +6,29 @@
   <component name="ChangeListManager">
     <list default="true" id="bdf80f97-2d1a-4dea-8948-c70810fda250" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Shopping.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Shopping.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/accountDemo/Authentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/accountDemo/Authentication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/AccountStatic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/model/account/AccountStatic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/PasswordMaskingExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/PrintTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/view/PrintTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/model/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Seller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/model/Seller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Shopping.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/Shopping.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ValidatorAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/authentication/ValidatorAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/accountDemo/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/model/account/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/accountDemo/AccountStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/model/account/AccountStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/accountDemo/Authentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/authentication/Authentication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/ValidatorAccountTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/aspiresys/ValidatorAccountTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/AccountStatic.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/PrintTable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Product.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Seller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Shopping.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Shopping.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/ValidatorAccount.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/accountDemo/Account.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/accountDemo/AccountStatus$AccountStatusNote.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/accountDemo/AccountStatus.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/accountDemo/Authentication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/org/example/ValidatorAccountTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/example/ValidatorAccountTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,12 +67,18 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.example.accountDemo" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

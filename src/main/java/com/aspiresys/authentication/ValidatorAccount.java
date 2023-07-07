@@ -1,13 +1,21 @@
-package org.example;
+package com.aspiresys.authentication;
 
 
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ValidatorAccount {
     //Role Buyer Seller Admin
     private String Username,Password,Role,Description,Phone_Number,Email;
-
+    static ArrayList<String> invalidNumbers = new ArrayList<>();
+    static {
+        invalidNumbers.add("1234567890"); // Valid
+        invalidNumbers.add("9876543210"); // Valid
+        invalidNumbers.add("123456789");  // Invalid
+        invalidNumbers.add("abcdefghij");  // Invalid
+        invalidNumbers.add("0987654321"); // Valid
+    }
 
     public ValidatorAccount(String username, String password, String role, String description, String phone_Number, String email) {
         Username = username;
@@ -60,7 +68,12 @@ public class ValidatorAccount {
 
     private  boolean phoneNumberValid() {
         if (Phone_Number.length() == 10 && Phone_Number.matches("[0-9]+")){
-            return true;
+           for (String invalidNumber:invalidNumbers){
+               if (Phone_Number.equals(invalidNumber)){
+                   return false;
+               }
+           }
+           return true;
         }
         System.out.println("Phone number not valid format");
        return false;

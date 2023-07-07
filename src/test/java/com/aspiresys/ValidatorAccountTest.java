@@ -1,6 +1,7 @@
-package org.example;
+package com.aspiresys;
 
 
+import com.aspiresys.authentication.ValidatorAccount;
 import org.junit.Assert;
 import org.junit.Test;
 

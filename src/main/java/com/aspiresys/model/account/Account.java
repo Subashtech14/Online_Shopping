@@ -1,4 +1,4 @@
-package org.example.accountDemo;
+package com.aspiresys.model.account;
 
 public record Account (String Username,String Password,String Role,String Description,String Phone_Number,String Email) {
 

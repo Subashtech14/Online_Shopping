@@ -1,4 +1,4 @@
-package org.example.accountDemo;
+package com.aspiresys.model.account;
 
 public class AccountStatus {
     private static String username=null;
