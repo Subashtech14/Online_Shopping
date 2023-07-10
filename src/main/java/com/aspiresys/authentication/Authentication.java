@@ -1,5 +1,6 @@
 package com.aspiresys.authentication;
 
+import com.aspiresys.Online_Shopping;
 import com.aspiresys.Shopping;
 import com.aspiresys.model.Seller;
 import com.aspiresys.model.account.Account;
@@ -9,69 +10,61 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Authentication {
-    static ArrayList<Account> account = new ArrayList<>();
-    public void defaultAccount(){
-        account.add(new Account("admin","admin","admin","admin","admin","admin"));
+    private static ArrayList<Account> accounts = new ArrayList<>();
+
+    public void defaultAccount() {
+        accounts.add(new Account("admin", "admin", "admin", "admin", "admin", "admin"));
     }
 
-    public  boolean login(){
-        Scanner scanner =new Scanner(System.in);
-        System.out.println("Enter the UserName");
-        String name = scanner.nextLine();
-        System.out.println("Enter the Password");
+    public boolean login() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the Username: ");
+        String username = scanner.nextLine();
+        System.out.println("Enter the Password: ");
         String password = scanner.nextLine();
-        System.out.println(account);
-       for (Account accounts:account){
-           //System.out.println("account status "+accounts);
-           //System.out.println(accounts.Username().equals(name) && accounts.Password().equals(password));
-           if (accounts.Username().equals(name) && accounts.Password().equals(password)){
 
-               System.out.println("Account Logged in Successfully");
-               new AccountStatus(name,1);
-               if (accounts.Role().equals("Seller") || accounts.Role().equals("admin")){
-                   return true;
-               }
-               else {
-                   new Seller().viewAndBuy();
-               }
+        for (Account account : accounts) {
+            if (account.Username().equals(username) && account.Password().equals(password)) {
+                System.out.println("Account logged in successfully");
+                new AccountStatus(username, 1);
 
-           }
+                if (account.Role().equals("Seller") || account.Role().equals("admin")) {
+                    new Seller().gettingStartedSeller();
+                    return true;
+                } else {
+                    new Seller().viewAndBuy();
+                }
+            }
+        }
 
-
-       }
         return false;
     }
 
     public void siginUp() {
-        Scanner scanner=new Scanner(System.in);
-        System.out.println("Enter the User Name ");
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the Username: ");
         String username = scanner.nextLine();
-        System.out.println("Enter the Password ");
-        String password1 = scanner.nextLine();
-        System.out.println("Enter the Email ");
+        System.out.println("Enter the Password: ");
+        String password = scanner.nextLine();
+        System.out.println("Enter the Email: ");
         String email = scanner.nextLine();
-        System.out.println("Enter the Phone Number ");
-        String phone_Number = scanner.nextLine();
-        System.out.println("""
-                Enter the Role 
-                Seller
-                Buyer""");
+        System.out.println("Enter the Phone Number: ");
+        String phoneNumber = scanner.nextLine();
+        System.out.println("Enter the Role (Seller/Buyer): ");
         String role = scanner.nextLine();
-        System.out.println("Description ");
+        System.out.println("Enter the Description: ");
         String description = scanner.nextLine();
-        ValidatorAccount validate=new ValidatorAccount(username, password1, role, description, phone_Number, email);
-        if(validate.validate()){
-            //System.out.println("Account Added"+account.add(new Account(username, password1, role, description, phone_Number, email)));
-            System.out.println("""
-                    Account Created Successfully
-                    Please Re-Login""");
-            //System.out.println(account);
-            login();
-        }
-        System.out.println("Account is not Created");
-        siginUp();
-    }
 
+        ValidatorAccount validator = new ValidatorAccount(username, password, role, description, phoneNumber, email);
+        if (validator.validate()) {
+            accounts.add(new Account(username, password, role, description, phoneNumber, email));
+            System.out.println("Account created successfully. Please log in.");
+            login(); // Prompt the user to log in again after creating the account
+        } else {
+            System.out.println("Account creation failed. Please try again.");
+            siginUp();
+        }
+    }
 
     public void logout() {
         new AccountStatus();

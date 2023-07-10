@@ -10,11 +10,11 @@ public class ValidatorAccount {
     private String Username,Password,Role,Description,Phone_Number,Email;
     static ArrayList<String> invalidNumbers = new ArrayList<>();
     static {
-        invalidNumbers.add("1234567890"); // Valid
-        invalidNumbers.add("9876543210"); // Valid
+        invalidNumbers.add("1234567890"); // inValid
+        invalidNumbers.add("9876543210"); // inValid
         invalidNumbers.add("123456789");  // Invalid
         invalidNumbers.add("abcdefghij");  // Invalid
-        invalidNumbers.add("0987654321"); // Valid
+        invalidNumbers.add("0987654321"); // inValid
     }
 
     public ValidatorAccount(String username, String password, String role, String description, String phone_Number, String email) {

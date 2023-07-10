@@ -1,8 +1,9 @@
 package com.aspiresys.model;
 
 
-import com.aspiresys.view.PrintTable;
 import com.aspiresys.Shopping;
+import com.aspiresys.view.PrintTable;
+import com.aspiresys.Online_Shopping;
 import com.aspiresys.model.account.AccountStatus;
 import com.aspiresys.authentication.Authentication;
 
@@ -37,16 +38,7 @@ public class Seller {
     }
     public void viewOurProduct(){
         new PrintTable().PrintItems(products);
-        if(AccountStatus.AccountStatusNote.getStatus()){
-        for (Product product:products){
-        System.out.println(product.toString());
-    }
-            Shopping.getStarted();
-    }
-        else {
-            System.out.println("You are not Logged in \n Please Login to Buy the Product");
-            Shopping.getStarted();
-        }
+        Shopping.getStarted();
     }
 
     public void addProduct(){
@@ -87,7 +79,7 @@ public class Seller {
              System.out.println("Account is not Logged in \n Please Login or Sign Up to Continue");
              Shopping.getStarted();
          }else{
-        BuyProduct();
+            BuyProduct();
          }
     }
 
