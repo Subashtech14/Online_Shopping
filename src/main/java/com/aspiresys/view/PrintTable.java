@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class PrintTable {
 
-public void PrintItems(ArrayList<Product> products) {
+public void printItems(ArrayList<Product> products) {
     int cellWidth = 18; // Adjust the cell width as needed
     int tableWidth = (cellWidth + 3) * 7; // Calculate table width based on cell width and number of columns
 

@@ -51,8 +51,8 @@ public class Shopping {
                             Please Select Another One
                             """);
                     throw new IllegalArgumentException();
-                } catch (IllegalArgumentException e) {
-                    System.out.println(e);
+                } catch (IllegalArgumentException exception) {
+                    System.out.println(exception);
                     Shopping.getStarted();
                 }
 

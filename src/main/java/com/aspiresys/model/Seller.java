@@ -37,7 +37,7 @@ public class Seller {
 
     }
     public void viewOurProduct(){
-        new PrintTable().PrintItems(products);
+        new PrintTable().printItems(products);
         Shopping.getStarted();
     }
 
@@ -74,7 +74,7 @@ public class Seller {
     }
     public void viewAndBuy(){
 //         int i=0;
-         new PrintTable().PrintItems(products);
+         new PrintTable().printItems(products);
          if (!AccountStatus.AccountStatusNote.getStatus()){
              System.out.println("Account is not Logged in \n Please Login or Sign Up to Continue");
              Shopping.getStarted();
@@ -91,20 +91,20 @@ public class Seller {
         else {
         int chooseProduct;
         String option;
-        Scanner sc=new Scanner(System.in);
+        Scanner scanner=new Scanner(System.in);
         do{
         System.out.println("Choose the Product ");
-        chooseProduct= sc.nextInt();
+        chooseProduct= scanner.nextInt();
         System.out.println("Choose the Quantity ");
-        int quantity= sc.nextInt();
+        int quantity= scanner.nextInt();
         Product product=products.get(chooseProduct);
         product.setNo(quantity);
         BuyedList.add(product);
         System.out.println("Do you want to Continue?");
-        option=sc.next();
+        option=scanner.next();
         }while (option.equalsIgnoreCase("y"));
         int total = 0;
-        new PrintTable().PrintItems(BuyedList);
+        new PrintTable().printItems(BuyedList);
         for (Product product:BuyedList){
             total=total+product.getPrice();
         }
