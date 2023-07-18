@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Authentication {
-    private static ArrayList<Account> accounts = new ArrayList<>();
+    private static final ArrayList<Account> accounts = new ArrayList<>();
 
     public void defaultAccount() {
         accounts.add(new Account("admin", "admin", "admin", "admin", "admin", "admin"));
@@ -32,7 +32,7 @@ public class Authentication {
                     new Seller().gettingStartedSeller();
                     return true;
                 } else {
-                    new Seller().viewAndBuy();
+                    Shopping.getStarted();
                 }
             }
         }

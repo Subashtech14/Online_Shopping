@@ -17,6 +17,7 @@ public class AccountStatus {
 
         }
         public static boolean getStatus(){
+            //System.out.println(AccountStatus.username+" "+AccountStatus.status);
             return status != 0;
         }
 

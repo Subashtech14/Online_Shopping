@@ -37,7 +37,7 @@ public class Seller {
 
     }
     public void viewOurProduct(){
-        new PrintTable().printItems(products);
+        new PrintTable(products).printItems();
         Shopping.getStarted();
     }
 
@@ -73,8 +73,8 @@ public class Seller {
         Shopping.getStarted();
     }
     public void viewAndBuy(){
-//         int i=0;
-         new PrintTable().printItems(products);
+
+         new PrintTable(products).printItems();
          if (!AccountStatus.AccountStatusNote.getStatus()){
              System.out.println("Account is not Logged in \n Please Login or Sign Up to Continue");
              Shopping.getStarted();
@@ -83,8 +83,8 @@ public class Seller {
          }
     }
 
-    private void BuyProduct() {
-        if (  AccountStatus.AccountStatusNote.getStatus()){
+    public void BuyProduct() {
+        if (!AccountStatus.AccountStatusNote.getStatus()){
             System.out.println("You are not Logged in \n Please Login to Buy the Product");
             new Authentication().login();
         }
@@ -104,7 +104,7 @@ public class Seller {
         option=scanner.next();
         }while (option.equalsIgnoreCase("y"));
         int total = 0;
-        new PrintTable().printItems(BuyedList);
+        new PrintTable(BuyedList).printItemsWithCheckout();
         for (Product product:BuyedList){
             total=total+product.getPrice();
         }
