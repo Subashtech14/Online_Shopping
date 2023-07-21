@@ -7,6 +7,7 @@ Reviewed On:
 */
 package com.aspiresys;
 
+import com.aspiresys.controller.Shopping;
 import com.aspiresys.model.Seller;
 import com.aspiresys.authentication.Authentication;
 

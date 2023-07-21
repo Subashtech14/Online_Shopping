@@ -1,5 +1,6 @@
 package com.aspiresys.view;
 
+import com.aspiresys.controller.Shopping;
 import com.aspiresys.model.Product;
 import com.aspiresys.model.Seller;
 
@@ -11,53 +12,28 @@ public class PrintTable {
     public PrintTable(){}
     public PrintTable(ArrayList<Product> products){
         PrintTable.products =products;
+
     }
-public void printItems() {
-    int cellWidth = 18; // Adjust the cell width as needed
-    int tableWidth = (cellWidth + 3) * 7; // Calculate table width based on cell width and number of columns
 
-    // Print table--top border
-    System.out.println("+" + "-".repeat(tableWidth - 2) + "+");
-
-    // Print table header
-    System.out.printf("| %1$-" + cellWidth + "s | %2$-" + cellWidth + "s | %3$-" + cellWidth + "s | %4$-" + cellWidth + "s | %5$-" + cellWidth + "s | %6$-" + cellWidth + "s | %7$-" + cellWidth + "s |\n",
-            "Product Name", "Brand", "Model", "Description", "Price", "Rating", "Quantity");
-
-    // Print table mid border
-    System.out.println("+" + "-".repeat(tableWidth - 2) + "+");
-
-    // Print table rows
-    for (Product product : products) {
-        System.out.printf("| %1$-" + cellWidth + "s | %2$-" + cellWidth + "s | %3$-" + cellWidth + "s | %4$-" + cellWidth + "s | %5$-" + cellWidth + "d | %6$-" + cellWidth + "d | %7$-" + cellWidth + "d |\n",
-                product.getProductName(),
-                product.getBrand(),
-                product.getModel(),
-                product.getProductDescription(),
-                product.getPrice(),
-                product.getRating(),
-                product.getNo());
-
-        // Print table row separator
-        System.out.println("+" + "-".repeat(tableWidth - 2) + "+");
-    }
-}
-public void printItemsWithCheckout() {
+    public void printItems(ArrayList<Product> products) {
         int cellWidth = 18; // Adjust the cell width as needed
-        int tableWidth = (cellWidth + 3) * 7; // Calculate table width based on cell width and number of columns
+        int tableWidth = (cellWidth + 3) * 8; // Calculate table width based on cell width and number of columns (including S.No)
 
         // Print table--top border
         System.out.println("+" + "-".repeat(tableWidth - 2) + "+");
 
         // Print table header
-        System.out.printf("| %1$-" + cellWidth + "s | %2$-" + cellWidth + "s | %3$-" + cellWidth + "s | %4$-" + cellWidth + "s | %5$-" + cellWidth + "s | %6$-" + cellWidth + "s | %7$-" + cellWidth + "s |\n",
-                "Product Name", "Brand", "Model", "Description", "Price", "Rating", "Quantity");
+        System.out.printf("| %5s | %-" + (cellWidth + 5) + "s | %-" + cellWidth + "s | %-" + cellWidth + "s | %-" + cellWidth + "s | %-" + cellWidth + "s | %-" + cellWidth + "s | %-" + cellWidth + "s |\n",
+                "S.No", "Product Name", "Brand", "Model", "Description", "Price", "Rating", "Quantity");
 
         // Print table mid border
         System.out.println("+" + "-".repeat(tableWidth - 2) + "+");
 
         // Print table rows
+        int serialNumber = 1;
         for (Product product : products) {
-            System.out.printf("| %1$-" + cellWidth + "s | %2$-" + cellWidth + "s | %3$-" + cellWidth + "s | %4$-" + cellWidth + "s | %5$-" + cellWidth + "d | %6$-" + cellWidth + "d | %7$-" + cellWidth + "d |\n",
+            System.out.printf("| %5d | %-" + (cellWidth + 5) + "." + (cellWidth + 5) + "s | %-" + cellWidth + "." + cellWidth + "s | %-" + cellWidth + "." + cellWidth + "s | %-" + cellWidth + "." + cellWidth + "s | %-" + cellWidth + "d | %-" + cellWidth + "d | %-" + cellWidth + "d |\n",
+                    serialNumber,
                     product.getProductName(),
                     product.getBrand(),
                     product.getModel(),
@@ -68,6 +44,42 @@ public void printItemsWithCheckout() {
 
             // Print table row separator
             System.out.println("+" + "-".repeat(tableWidth - 2) + "+");
+            serialNumber++;
+        }
+    }
+
+
+
+    public void printItemsWithCheckout() {
+        int cellWidth = 18; // Adjust the cell width as needed
+        int tableWidth = (cellWidth + 3) * 8; // Calculate table width based on cell width and number of columns (including S.No)
+
+        // Print table--top border
+        System.out.println("+" + "-".repeat(tableWidth - 2) + "+");
+
+        // Print table header
+        System.out.printf("| %5s | %-" + (cellWidth + 5) + "s | %-" + cellWidth + "s | %-" + cellWidth + "s | %-" + cellWidth + "s | %-" + cellWidth + "s | %-" + cellWidth + "s | %-" + cellWidth + "s |\n",
+                "S.No", "Product Name", "Brand", "Model", "Description", "Price", "Rating", "Quantity");
+
+        // Print table mid border
+        System.out.println("+" + "-".repeat(tableWidth - 2) + "+");
+
+        // Print table rows
+        int serialNumber = 1;
+        for (Product product : products) {
+            System.out.printf("| %5d | %-" + (cellWidth + 5) + "." + (cellWidth + 5) + "s | %-" + cellWidth + "." + cellWidth + "s | %-" + cellWidth + "." + cellWidth + "s | %-" + cellWidth + "." + cellWidth + "s | %-" + cellWidth + "d | %-" + cellWidth + "d | %-" + cellWidth + "d |\n",
+                    serialNumber,
+                    product.getProductName(),
+                    product.getBrand(),
+                    product.getModel(),
+                    product.getProductDescription(),
+                    product.getPrice(),
+                    product.getRating(),
+                    product.getNo());
+
+            // Print table row separator
+            System.out.println("+" + "-".repeat(tableWidth - 2) + "+");
+            serialNumber++;
         }
         Scanner scanner = new Scanner(System.in);
         System.out.println("Do you want to checkout Y or N ?");
@@ -101,17 +113,18 @@ public void printItemsWithCheckout() {
     private void payCashOnDelivery(ArrayList<Product> products) {
         int total = 0;
         for (Product product:products){
-            total=total+product.getPrice();
+            total=total+product.getPrice()*product.getNo();
         }
         System.out.println("Please pay the cash on delivery of cash "+total);
-        System.exit(0);
+        Shopping.getStarted();
     }
 
     public void payCreditCard(ArrayList<Product> product){
         int total = 0;
         for (Product products:products){
-            total=total+products.getPrice();
+            total=total+products.getPrice()*products.getNo();
         }
+        System.out.println("Please pay the credit card of cash "+total);
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter your credit card number: ");
         String creditCardNumber = scanner.next();
@@ -124,7 +137,7 @@ public void printItemsWithCheckout() {
                         System.out.println("Processing Payment... +"+i+"%");
                     }
                 System.out.println("Purchase successful! ");
-
+                Shopping.getStarted();
                 }
                 catch (Exception exception){
                     System.out.println(exception.getMessage());

@@ -12,13 +12,16 @@ public class AccountStatus {
     AccountStatus.status=0;
     }
 
+
     public static class AccountStatusNote {
         AccountStatusNote(){
 
         }
         public static boolean getStatus(){
-            //System.out.println(AccountStatus.username+" "+AccountStatus.status);
             return status != 0;
+        }
+        public static String getUsername(){
+            return username;
         }
 
     }

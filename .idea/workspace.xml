@@ -5,17 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bdf80f97-2d1a-4dea-8948-c70810fda250" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/logs/authentication.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/logs/product.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/account.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/product.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/aspiresys/PasswordMasking.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/aspiresys/Online_Shopping.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/Online_Shopping.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/aspiresys/Shopping.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/controller/Shopping.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/aspiresys/authentication/Authentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/authentication/Authentication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/aspiresys/authentication/ValidatorAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/authentication/ValidatorAccount.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/aspiresys/model/Seller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/model/Seller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/aspiresys/model/account/AccountStatic.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/aspiresys/model/account/AccountStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/model/account/AccountStatus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/aspiresys/view/PrintTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/view/PrintTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/aspiresys/PasswordMasking.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/aspiresys/PasswordMasking.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/aspiresys/Shopping.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/aspiresys/Shopping.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/aspiresys/ValidatorAccountTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/aspiresys/ValidatorAccountTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/aspiresys/Online_Shopping.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/aspiresys/Online_Shopping.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/aspiresys/Shopping.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/aspiresys/authentication/Authentication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/aspiresys/authentication/Authentication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/aspiresys/authentication/ValidatorAccount.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/aspiresys/authentication/ValidatorAccount.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/aspiresys/model/Seller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/aspiresys/model/Seller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/aspiresys/model/account/AccountStatic.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/aspiresys/model/account/AccountStatus$AccountStatusNote.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/aspiresys/model/account/AccountStatus$AccountStatusNote.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/aspiresys/view/PrintTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/aspiresys/view/PrintTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/org/example/ValidatorAccountTest.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +74,12 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Online_Shopping\src\main\java\com\aspiresys\logs" />
+      <recent name="E:\Online_Shopping\src\main\resources" />
+      <recent name="E:\Online_Shopping\src\main\java\com\aspiresys\properties" />
+      <recent name="E:\Online_Shopping\src\main\java\com\aspiresys" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="org.example.accountDemo" />
     </key>
@@ -76,6 +94,9 @@
       <updated>1688374111005</updated>
     </task>
     <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.log" />
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ID_ORDER">

@@ -1,14 +1,19 @@
 package com.aspiresys.model;
 
 
-import com.aspiresys.Shopping;
-import com.aspiresys.view.PrintTable;
-import com.aspiresys.Online_Shopping;
-import com.aspiresys.model.account.AccountStatus;
 import com.aspiresys.authentication.Authentication;
+import com.aspiresys.controller.Shopping;
+import com.aspiresys.model.account.AccountStatus;
+import com.aspiresys.view.PrintTable;
 
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Properties;
 import java.util.Scanner;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 public class Seller {
 
@@ -16,10 +21,45 @@ public class Seller {
     String ProductName,Brand, Model, ProductDescription;
     int Price, Rating, No;
     static  ArrayList<Product> products=new ArrayList<>();
+    private static final Logger logger1 = Logger.getLogger(Seller.class.getName());
+    static {
+        try {
+            logger1.setUseParentHandlers(false);
+            FileHandler fileHandler1 = new FileHandler("src/main/java/com/aspiresys/logs/product.log");
+            SimpleFormatter formatter = new SimpleFormatter();
+            fileHandler1.setFormatter(formatter);
+            logger1.addHandler(fileHandler1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void defaultProducts(){
-        products.add(new Product("Samsung Galaxy S20", "Samsung", "Galaxy S20", "Samsung Galaxy S20", 9999, 4, 5));
-        products.add(new Product("IPhone 11", "Apple", "iPhone 11", "Apple iPhone 11", 9999, 4, 5));
-        products.add(new Product("IPhone 12", "Apple", "iPhone 12", "Apple iPhone 12", 9999, 4, 5));
+        try {
+            Properties properties = new Properties();
+            FileReader fileReader = new FileReader("src/main/resources/product.properties");
+            properties.load(fileReader);
+            int productIndex = 1;
+            while (properties.containsKey("product" + productIndex + ".name")) {
+                String name = properties.getProperty("product" + productIndex + ".name");
+                String brand = properties.getProperty("product" + productIndex + ".brand");
+                String model = properties.getProperty("product" + productIndex + ".model");
+                String description = properties.getProperty("product" + productIndex + ".description");
+                int price = Integer.parseInt(properties.getProperty("product" + productIndex + ".price"));
+                int rating = Integer.parseInt(properties.getProperty("product" + productIndex + ".rating"));
+                int stock = Integer.parseInt(properties.getProperty("product" + productIndex + ".stock"));
+
+                Product product = new Product(name, brand, model, description, price, rating, stock);
+                products.add(product);
+
+                productIndex++;
+            }
+            fileReader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
     public void gettingStartedSeller(){
         int option;
@@ -37,7 +77,7 @@ public class Seller {
 
     }
     public void viewOurProduct(){
-        new PrintTable(products).printItems();
+        new PrintTable().printItems(products);
         Shopping.getStarted();
     }
 
@@ -74,7 +114,7 @@ public class Seller {
     }
     public void viewAndBuy(){
 
-         new PrintTable(products).printItems();
+         new PrintTable().printItems(products);
          if (!AccountStatus.AccountStatusNote.getStatus()){
              System.out.println("Account is not Logged in \n Please Login or Sign Up to Continue");
              Shopping.getStarted();
@@ -93,22 +133,28 @@ public class Seller {
         String option;
         Scanner scanner=new Scanner(System.in);
         do{
-        System.out.println("Choose the Product ");
+        System.out.println("Choose the Product Number to Buy the Product ");
         chooseProduct= scanner.nextInt();
         System.out.println("Choose the Quantity ");
         int quantity= scanner.nextInt();
-        Product product=products.get(chooseProduct);
+        Product product=products.get(chooseProduct-1);
         product.setNo(quantity);
         BuyedList.add(product);
-        System.out.println("Do you want to Continue?");
+        System.out.println("Do you want to Continue Y or N ?");
         option=scanner.next();
         }while (option.equalsIgnoreCase("y"));
+            logger1.info("The Products brought by the "+AccountStatus.AccountStatusNote.getUsername()+" \n "+BuyedList.toString());
         int total = 0;
+            for (Product product:BuyedList){
+                total=total+product.getPrice()*product.getNo();
+            }
+            System.out.println("Total Price "+total);
+
+            logger1.info("User had Buyed Products of worth  "+total);
         new PrintTable(BuyedList).printItemsWithCheckout();
-        for (Product product:BuyedList){
-            total=total+product.getPrice();
-        }
-        System.out.println("Total Price "+total);
+
+
+
     }
     }
 }

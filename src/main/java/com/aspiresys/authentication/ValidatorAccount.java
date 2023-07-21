@@ -7,7 +7,11 @@ import java.util.regex.Pattern;
 
 public class ValidatorAccount {
     //Role Buyer Seller Admin
-    private String Username,Password,Role,Description,Phone_Number,Email;
+    private final String Password;
+    private final String Role;
+    private final String Phone_Number;
+    private final String Email;
+
     static ArrayList<String> invalidNumbers = new ArrayList<>();
     static {
         invalidNumbers.add("1234567890"); // inValid
@@ -17,11 +21,9 @@ public class ValidatorAccount {
         invalidNumbers.add("0987654321"); // inValid
     }
 
-    public ValidatorAccount(String username, String password, String role, String description, String phone_Number, String email) {
-        Username = username;
+    public ValidatorAccount(String password, String role, String phone_Number, String email) {
         Password = password;
         Role = role;
-        Description = description;
         Phone_Number = phone_Number;
         Email=email;
     }
@@ -30,11 +32,8 @@ public class ValidatorAccount {
         boolean pass=passwordValid();
         boolean phone=phoneNumberValid();
         boolean role=roleValid();
-        if(email && pass && phone && role){
-//            System.out.println(email && pass && phone && role);
-            return true;
-        }
-      return false;
+
+        return email && pass && phone && role;
 
     }
 

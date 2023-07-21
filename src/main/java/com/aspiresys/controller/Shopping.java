@@ -1,4 +1,4 @@
-package com.aspiresys;
+package com.aspiresys.controller;
 
 import com.aspiresys.authentication.Authentication;
 import com.aspiresys.model.Seller;
@@ -9,15 +9,14 @@ import java.util.Scanner;
 public class Shopping {
     public static void getStarted() {
         int Option;
-        //System.out.println(AccountStatus.AccountStatusNote.getStatus());
         if (!AccountStatus.AccountStatusNote.getStatus()) {
             System.out.println("""
                     1 -> Login
-                    2 -> SignUp """);
+                    2 -> SignUp\s""");
         }
-        System.out.println(""" 
+        System.out.println("""
                 3 -> View Product Details
-                4 -> View and Buy the Products """);
+                4 -> View and Buy the Products\s""");
         if (AccountStatus.AccountStatusNote.getStatus()) {
             System.out.println("5-> Logout");
         }
@@ -32,7 +31,7 @@ public class Shopping {
                     new Authentication().login();
                 }
             }
-            case 2 -> new Authentication().siginUp();
+            case 2 -> new Authentication().signUp();
             case 3 -> new Seller().viewOurProduct();
             case 4 -> new Seller().viewAndBuy();
 
@@ -52,7 +51,7 @@ public class Shopping {
                             """);
                     throw new IllegalArgumentException();
                 } catch (IllegalArgumentException exception) {
-                    System.out.println(exception);
+                   // System.out.println(exception);
                     Shopping.getStarted();
                 }
 
