@@ -1,11 +1,5 @@
-Jul 19, 2023 9:49:15 PM com.aspiresys.model.Seller BuyProduct
-INFO: The Products brought by the admin 
- [Product Name = IPhone 11
-Brand = Apple
-Model = iPhone 11
-Product Description = Apple iPhone 11
-Price = 9999
-Rating = 4
-Quantity = 4]
-Jul 19, 2023 9:49:15 PM com.aspiresys.model.Seller BuyProduct
-INFO: User had Buyed Products of worth  39996
+Aug 04, 2023 1:17:01 PM com.aspiresys.controller.Buyer BuyProduct
+INFO: The Products brought by the Killer 
+ [Product{ProductName='Smartphone', Brand='AwesomeTech', Model='XT1000', ProductDescription='Powerful smartphone with great features', Owner='admin', Price=799, Rating=4, No=3}]
+Aug 04, 2023 1:17:01 PM com.aspiresys.controller.Buyer BuyProduct
+INFO: User had Buyed Products of worth  2397

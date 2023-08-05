@@ -4,53 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bdf80f97-2d1a-4dea-8948-c70810fda250" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/logs/authentication.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/logs/product.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/account.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/product.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/aspiresys/Online_Shopping.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/Online_Shopping.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/aspiresys/Shopping.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/controller/Shopping.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/aspiresys/authentication/Authentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/authentication/Authentication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/aspiresys/authentication/ValidatorAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/authentication/ValidatorAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/aspiresys/model/Seller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/model/Seller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/aspiresys/model/account/AccountStatic.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/aspiresys/model/account/AccountStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/model/account/AccountStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/aspiresys/view/PrintTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/view/PrintTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/aspiresys/ValidatorAccountTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/aspiresys/ValidatorAccountTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/aspiresys/Online_Shopping.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/aspiresys/Online_Shopping.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/aspiresys/Shopping.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/aspiresys/authentication/Authentication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/aspiresys/authentication/Authentication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/aspiresys/authentication/ValidatorAccount.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/aspiresys/authentication/ValidatorAccount.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/aspiresys/model/Seller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/aspiresys/model/Seller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/aspiresys/model/account/AccountStatic.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/aspiresys/model/account/AccountStatus$AccountStatusNote.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/aspiresys/model/account/AccountStatus$AccountStatusNote.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/aspiresys/view/PrintTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/aspiresys/view/PrintTable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/org/example/ValidatorAccountTest.class" beforeDir="false" />
-    </list>
+    <list default="true" id="bdf80f97-2d1a-4dea-8948-c70810fda250" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JUnit3 Test Class" />
         <option value="Class" />
+        <option value="TestNG Test Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="useMavenConfig" value="true" />
-      </MavenGeneralSettings>
-    </option>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2S3T97oyZN6KVWOJ592aIALG4Wc" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -65,8 +45,12 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;TestNG&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3&quot;: &quot;junit.framework.TestCase&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.TestNG&quot;: &quot;&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Subas/Downloads&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/Online_Shopping&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
@@ -80,9 +64,109 @@
       <recent name="E:\Online_Shopping\src\main\java\com\aspiresys\properties" />
       <recent name="E:\Online_Shopping\src\main\java\com\aspiresys" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+      <recent name="junit.framework.TestCase" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.aspiresys.controller" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.aspiresys.authentication" />
+      <recent name="com.aspiresys.controller" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="org.example.accountDemo" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="AdminTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Online_Shopping" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.aspiresys.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.aspiresys.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.aspiresys.controller.AdminTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AdminTest.testAddUser_ValidInput_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Online_Shopping" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.aspiresys.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.aspiresys.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.aspiresys.controller.AdminTest" />
+      <option name="METHOD_NAME" value="testAddUser_ValidInput_Success" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ValidatorAccountTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Online_Shopping" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.aspiresys.authentication.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.aspiresys.authentication" />
+      <option name="MAIN_CLASS_NAME" value="com.aspiresys.authentication.ValidatorAccountTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ValidatorAccountTest.runTestCase" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Online_Shopping" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.aspiresys.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.aspiresys" />
+      <option name="MAIN_CLASS_NAME" value="com.aspiresys.ValidatorAccountTest" />
+      <option name="METHOD_NAME" value="runTestCase" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ValidatorAccountTest.testValidAccount" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Online_Shopping" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.aspiresys.authentication.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.aspiresys.authentication" />
+      <option name="MAIN_CLASS_NAME" value="com.aspiresys.authentication.ValidatorAccountTest" />
+      <option name="METHOD_NAME" value="testValidAccount" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.ValidatorAccountTest" />
+        <item itemvalue="JUnit.ValidatorAccountTest.testValidAccount" />
+        <item itemvalue="JUnit.AdminTest" />
+        <item itemvalue="JUnit.AdminTest.testAddUser_ValidInput_Success" />
+        <item itemvalue="JUnit.ValidatorAccountTest.runTestCase" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -111,5 +195,15 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.IllegalArgumentException" package="java.lang" />
+          <option name="timeStamp" value="5" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

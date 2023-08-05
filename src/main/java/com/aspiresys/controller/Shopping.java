@@ -1,7 +1,8 @@
 package com.aspiresys.controller;
-
+/*
+*It is the Starting Point of the application
+*/
 import com.aspiresys.authentication.Authentication;
-import com.aspiresys.model.Seller;
 import com.aspiresys.model.account.AccountStatus;
 
 import java.util.Scanner;
@@ -23,17 +24,10 @@ public class Shopping {
         Scanner scanner = new Scanner(System.in);
         Option = scanner.nextInt();
         switch (Option) {
-            case 1 -> {
-                if (new Authentication().login()) {
-                    new Seller().gettingStartedSeller();
-                } else {
-                    System.out.println("Username or Password Incorrect");
-                    new Authentication().login();
-                }
-            }
+            case 1 -> new Authentication().login();
             case 2 -> new Authentication().signUp();
-            case 3 -> new Seller().viewOurProduct();
-            case 4 -> new Seller().viewAndBuy();
+            case 3 -> new Buyer().viewOurProduct();
+            case 4 -> new Buyer().viewAndBuy();
 
             case 5 -> {
                 if (AccountStatus.AccountStatusNote.getStatus()) {
@@ -51,7 +45,6 @@ public class Shopping {
                             """);
                     throw new IllegalArgumentException();
                 } catch (IllegalArgumentException exception) {
-                   // System.out.println(exception);
                     Shopping.getStarted();
                 }
 

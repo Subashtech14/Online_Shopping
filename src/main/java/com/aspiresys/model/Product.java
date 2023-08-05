@@ -1,16 +1,18 @@
 package com.aspiresys.model;
 
 public class Product{
-        String ProductName, Brand, Model, ProductDescription;
+        String ProductName, Brand, Model, ProductDescription,Owner;
         int Price, Rating, No;
-        public Product(String ProductName, String Brand, String Model, String ProductDescription, int Price, int Rating, int No) {
-            this.ProductName = ProductName;
-            this.Brand = Brand;
-            this.Model = Model;
-            this.ProductDescription = ProductDescription;
-            this.Price = Price;
-            this.Rating = Rating;
-            this.No = No;
+        public  Product(String ProductName, String Brand, String Model, String ProductDescription, int Price, int Rating, int No, String Owner) {
+
+                this.ProductName = ProductName;
+                this.Brand = Brand;
+                this.Model = Model;
+                this.ProductDescription = ProductDescription;
+                this.Price = Price;
+                this.Rating = Rating;
+                this.No = No;
+                this.Owner = Owner;
         }
 
     public String getProductName() {
@@ -45,6 +47,14 @@ public class Product{
         ProductDescription = productDescription;
     }
 
+    public String getOwner() {
+        return Owner;
+    }
+
+    public void setOwner(String owner) {
+        Owner = owner;
+    }
+
     public int getPrice() {
         return Price;
     }
@@ -71,12 +81,16 @@ public class Product{
 
     @Override
     public String toString() {
-        return "Product Name = " + ProductName  +
-                "\nBrand = " + Brand  +
-                "\nModel = " + Model  +
-                "\nProduct Description = " + ProductDescription  +
-                "\nPrice = " + Price +
-                "\nRating = " + Rating +
-                "\nQuantity = " + No ;
+        return "Product{" +
+                "ProductName='" + ProductName + '\'' +
+                ", Brand='" + Brand + '\'' +
+                ", Model='" + Model + '\'' +
+                ", ProductDescription='" + ProductDescription + '\'' +
+                ", Owner='" + Owner + '\'' +
+                ", Price=" + Price +
+                ", Rating=" + Rating +
+                ", No=" + No +
+                '}';
     }
 }
+

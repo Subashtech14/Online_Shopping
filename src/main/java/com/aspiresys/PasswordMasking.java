@@ -1,7 +1,7 @@
 package com.aspiresys;
 
 import java.io.Console;
-import java.util.Arrays;
+
 //In Order to do password masking, we need to call system console from the system itself
 //For that we need to compile it with the following command [javac PasswordMasking.java]
 //Then run it with the following command [java PasswordMasking]
