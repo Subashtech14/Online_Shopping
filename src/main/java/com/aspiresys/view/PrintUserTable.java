@@ -4,18 +4,30 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 
+import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class PrintUserTable {
-    public void printTableBasedOnUser(String filePath,String ownerToView){
-        try {
-            FileReader fileReader = new FileReader(filePath);
-            CSVParser parser = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(fileReader);
+    public void printTableBasedOnUser(String filePath, String ownerToView) {
+
+        List<CSVRecord> records = new ArrayList<>();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath));
+             CSVParser parser = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(reader)) {
+
+            // Read all CSV records into a list during the first pass
+            for (CSVRecord record : parser) {
+                records.add(record);
+            }
 
             // Calculate optimal column widths
             int[] columnWidths = new int[7];
-            for (CSVRecord record : parser) {
+            for (CSVRecord record : records) {
                 String[] fields = {record.get("name"), record.get("brand"), record.get("model"),
                         record.get("description"), record.get("price"), record.get("rating"), record.get("stock")};
 
@@ -32,19 +44,14 @@ public class PrintUserTable {
                 tableWidth += width + 3;
             }
             int margin = 2;
-
-            // Print the table header
             printSeparator(tableWidth + 2 * margin);
             printTableRow(columnWidths, "Name", "Brand", "Model", "Description", "Price", "Rating", "Stock");
             printSeparator(tableWidth + 2 * margin);
 
-            fileReader = new FileReader(filePath);
-            parser = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(fileReader);
-
-            for (CSVRecord record : parser) {
+            for (CSVRecord record : records) {
                 String owner = record.get("owner");
                 if (owner.equals(ownerToView)) {
-                    // Display the CSV record for the specified owner in table format
+
                     printTableRow(columnWidths,
                             record.get("name"), record.get("brand"), record.get("model"),
                             record.get("description"), record.get("price"), record.get("rating"),
@@ -52,10 +59,8 @@ public class PrintUserTable {
                     printSeparator(tableWidth + 2 * margin);
                 }
             }
-
-            fileReader.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            Logger.getLogger(PrintUserTable.class.getName()).log(Level.SEVERE, "Error in Printing User Details", e);
         }
     }
 
@@ -78,6 +83,4 @@ public class PrintUserTable {
         }
         System.out.println("+");
     }
-
-
 }

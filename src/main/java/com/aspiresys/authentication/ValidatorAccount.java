@@ -40,7 +40,6 @@ public class ValidatorAccount {
         boolean phone=phoneNumberValid();
         boolean role=roleValid();
         boolean valid = isValidUsername(USER_NAME);
-
         return valid && email && pass && phone && role;
 
     }
@@ -68,7 +67,7 @@ public class ValidatorAccount {
             return true;
         }
         System.out.println("Email not valid");
-       return false;
+        return false;
 
 
     }
@@ -81,7 +80,7 @@ public class ValidatorAccount {
             return true;
         }
         System.out.println("Password not Strong");
-       return false;
+        return false;
     }
 
     private  boolean phoneNumberValid() {

@@ -42,9 +42,7 @@ public class Admin {
         }
          productFilePath = properties.getProperty("productFile");
          userFilePath = properties.getProperty("userFile");
-
     }
-
     public void adminAccess() {
         System.out.println("""
                 1 -> Add User
@@ -93,15 +91,12 @@ public class Admin {
         String role = scanner.nextLine();
         System.out.println("Enter the Description: ");
         String description = scanner.nextLine();
-
         ValidatorAccount validator = new ValidatorAccount(password, role, phoneNumber, phoneNumber, email);
         if (validator.validate()) {
-
             String[] headers = {"Username", "Password", "Email", "PhoneNumber", "Role", "Description"};
             String[] userDetails1 = {username, password, email, phoneNumber, role, description};
             writeUserDetails(userFilePath, headers, userDetails1);
             System.out.println("Account created successfully. Please log in.");
-
         } else {
             System.out.println("Account creation failed. Please try again.");
             addUser();
@@ -113,7 +108,6 @@ public class Admin {
         Path path = get(filePath);
         try (Writer writer = Files.newBufferedWriter(path, StandardOpenOption.APPEND, StandardOpenOption.CREATE);
              CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT)) {
-
             if (headers != null && headers.length > 0 && Files.size(path) == 0) {
                 csvPrinter.printRecord((Object[]) headers);
             }
@@ -130,35 +124,29 @@ public class Admin {
         String usernameToDelete = scanner.nextLine();
         Path inputFilePath = Paths.get(userFilePath);
         Path outputFilePath = Paths.get("E:\\Online_Shopping\\src\\main\\resources\\user_details_temp.csv");
-
         try (Reader reader = Files.newBufferedReader(inputFilePath);
              CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT.withFirstRecordAsHeader());
              Writer writer = Files.newBufferedWriter(outputFilePath, StandardOpenOption.CREATE)) {
             CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT.withHeader("Username", "Password", "Email", "PhoneNumber", "Role", "Description"));
-
             for (CSVRecord record : csvParser) {
                 String username = record.get("Username"); // Assuming 'Username' is the column containing usernames
                 if (!username.equals(usernameToDelete)) {
                     csvPrinter.printRecord(record);
                 }
             }
-
-        } catch (IOException e) {
-            logger.info("Error in Removing User Account");
+        } catch (IOException exception) {
+            logger.info("Error in Removing User Account "+exception);
         }
-
         // Replace the original file with the updated one
         try {
             Files.delete(inputFilePath);
             Files.move(outputFilePath, inputFilePath);
             System.out.println("User account '" + usernameToDelete + "' deleted successfully.");
-        } catch (IOException e) {
-            logger.info("Error in Removing User Account");
+        } catch (IOException exception) {
+            logger.info("Error in Removing User Account "+exception);
         }
         adminAccess();
     }
-
-
     public void editUser() {
         System.out.println("""
                 Enter the correct Username to Update that field
@@ -177,7 +165,6 @@ public class Admin {
         String role = scanner.nextLine();
         System.out.println("Enter the Description: ");
         String description = scanner.nextLine();
-
         ValidatorAccount validator = new ValidatorAccount(password, role, phoneNumber, phoneNumber, email);
         if (validator.validate()) {
             updateUser(username, password, email, phoneNumber, role, description);
@@ -210,24 +197,19 @@ public class Admin {
         System.out.println("Enter the Quantity");
         Number = scanner.nextInt();
         scanner.nextLine();
-
         try {
             boolean isFileEmpty = isFileEmpty(productFilePath);
-
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(productFilePath, true));
                  CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT)) {
-
-
-                if (!isFileEmpty) {
+                if (isFileEmpty) {
                     csvPrinter.printRecord("name", "brand", "model", "description", "price", "rating", "stock", "Owner");
                 }
-
                 csvPrinter.printRecord(ProductName, Brand, Model, ProductDescription, Price, Rating, Number, AccountStatus.AccountStatusNote.getUsername());
                 csvPrinter.flush();
                 System.out.println("Data appended to CSV file successfully!");
             }
-        } catch (IOException e) {
-            logger.info("Error in Writing User Details");
+        } catch (IOException exception) {
+            logger.info("Error in Writing User Details "+exception);
         }
         adminAccess();
     }
@@ -236,10 +218,8 @@ public class Admin {
         System.out.println("Enter the Product Name to delete: ");
         Scanner scanner = new Scanner(System.in);
         String productNameToDelete = scanner.nextLine();
-
         Path inputFilePath = Paths.get(productFilePath);
         Path outputFilePath = Paths.get("E:\\Online_Shopping\\src\\main\\resources\\products_temp.csv");
-
         try (Reader reader = Files.newBufferedReader(inputFilePath);
              CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT.withHeader());
              Writer writer = Files.newBufferedWriter(outputFilePath, StandardOpenOption.CREATE)) {
@@ -250,18 +230,16 @@ public class Admin {
                     csvPrinter.printRecord(record);
                 }
             }
-
-        } catch (IOException e) {
-            logger.info("Error in Removing Product Details");
+        } catch (IOException exception) {
+            logger.info("Error in Removing Product Details "+exception);
         }
-
 
         try {
             Files.delete(inputFilePath);
             Files.move(outputFilePath, inputFilePath);
             System.out.println("Product '" + productNameToDelete + "' deleted successfully.");
-        } catch (IOException e) {
-            logger.info("Error in Removing Product Details");
+        } catch (IOException exception) {
+            logger.info("Error in Removing Product Details "+exception);
         }
         adminAccess();
     }
@@ -270,19 +248,14 @@ public class Admin {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the Product Name to edit: ");
         String productNameToEdit = scanner.nextLine();
-
         Path inputFilePath = Paths.get(productFilePath);
         Path outputFilePath = Paths.get("E:\\Online_Shopping\\src\\main\\resources\\products_temp.csv");
-
         try (Reader reader = Files.newBufferedReader(inputFilePath);
              CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT.withHeader());
              Writer writer = Files.newBufferedWriter(outputFilePath, StandardOpenOption.CREATE)) {
-
             CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT.withHeader("ProductName", "Brand", "Model", "Description", "Price", "Rating", "Number"));
-
             for (CSVRecord record : csvParser) {
                 String productName = record.get("name");
-
                 if (productName.equals(productNameToEdit)) {
                     System.out.println("Enter the Product Name");
                     String productNameUpdated = scanner.nextLine();
@@ -301,7 +274,6 @@ public class Admin {
                     scanner.nextLine();
                     System.out.println("Enter the Owner: ");
                     String Owner = scanner.nextLine();
-
                     csvPrinter.printRecord(
                             productNameUpdated,
                             brandUpdated,
@@ -316,20 +288,17 @@ public class Admin {
                     csvPrinter.printRecord(record);
                 }
             }
-
-        } catch (IOException e) {
-            logger.info("Error in Writing Product Details");
+        } catch (IOException exception) {
+            logger.info("Error in Writing Product Details "+exception);
         }
-
         // Replace the original file with the updated one
         try {
             Files.delete(inputFilePath);
             Files.move(outputFilePath, inputFilePath);
             System.out.println("Product '" + productNameToEdit + "' edited successfully.");
-        } catch (IOException e) {
-            logger.info("Error in Writing Product Details");
+        } catch (IOException exception) {
+            logger.info("Error in Writing Product Details "+exception);
         }
-
         adminAccess();
     }
 
@@ -346,21 +315,25 @@ public class Admin {
     }
 
     public static boolean isFileEmpty(String filePath) {
-        File file = new File(filePath);
-        return file.length() == 0;
+        try {
+            long fileSize = Files.size(Paths.get(filePath));
+            System.out.println("File Size "+fileSize);
+            return fileSize == 0;
+        } catch (Exception exception) {
+            logger.info("Checking the file is Empty "+exception);
+            return false;
+        }
     }
 
     public void updateUser(String usernameToEdit, String newPassword, String newEmail, String newPhoneNumber, String newRole, String newDescription) {
         Path inputFilePath = Paths.get("E:\\Online_Shopping\\src\\main\\resources\\user_details.csv");
         Path outputFilePath = Paths.get("E:\\Online_Shopping\\src\\main\\resources\\user_details_temp.csv");
-
         try (Reader reader = Files.newBufferedReader(inputFilePath);
              CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT.withHeader("Username", "Password", "Email", "PhoneNumber", "Role", "Description"));
              Writer writer = Files.newBufferedWriter(outputFilePath, StandardOpenOption.CREATE)) {
             CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT.withHeader("Username", "Password", "Email", "PhoneNumber", "Role", "Description"));
             for (CSVRecord record : csvParser) {
                 String username = record.get("Username");
-
                 if (username.equals(usernameToEdit)) {
                     // Edit the desired fields
                     csvPrinter.printRecord(
@@ -375,17 +348,15 @@ public class Admin {
                     csvPrinter.printRecord(record);
                 }
             }
-
-        } catch (IOException e) {
-            logger.info("Error in Writing User Details");
+        } catch (IOException exception) {
+            logger.info("Error in Writing User Details "+exception);
         }
-
         // Replace the original file with the updated one
         try {
             Files.delete(inputFilePath);
             Files.move(outputFilePath, inputFilePath);
-        } catch (IOException e) {
-            logger.info("Error in Writing User Details");
+        } catch (IOException exception) {
+            logger.info("Error in Writing User Details "+exception);
         }
         adminAccess();
     }

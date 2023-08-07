@@ -25,12 +25,9 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
 public class Buyer {
-
     static ArrayList<Product> BuyedList = new ArrayList<>();
-
     static  ArrayList<Product> products=new ArrayList<>();
     private static final Logger logger1 = Logger.getLogger(Buyer.class.getName());
-
     private static final String productFilePath;
     private static final String productLog;
 
@@ -38,9 +35,8 @@ public class Buyer {
         Properties properties = new Properties();
         try (Reader reader = new FileReader("E:\\Online_Shopping\\src\\main\\resources\\config.properties")) {
             properties.load(reader);
-        } catch (IOException e) {
-            Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, "Can't Read Properties File", e);
-
+        } catch (IOException exception) {
+            Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, "Can't Read Properties File", exception);
         }
         productFilePath = properties.getProperty("productFile");
         productLog=properties.getProperty("productLog");
@@ -50,13 +46,13 @@ public class Buyer {
             SimpleFormatter formatter = new SimpleFormatter();
             fileHandler1.setFormatter(formatter);
             logger1.addHandler(fileHandler1);
-        } catch (IOException e) {
-           logger1.info("Error in Authentication");
+        } catch (IOException exception) {
+           logger1.info("Error in Authentication "+exception);
         }
+
         try {
             FileReader fileReader = new FileReader(productFilePath);
             CSVParser parser = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(fileReader);
-
             for (CSVRecord record : parser) {
                 String name = record.get("name");
                 String brand = record.get("brand");
@@ -66,31 +62,26 @@ public class Buyer {
                 double rating = Double.parseDouble(record.get("rating"));
                 int stock = Integer.parseInt(record.get("stock"));
                 String owner = record.get("owner");
-
                 Product product = new Product(name, brand, model, description, (int) price, (int) rating, stock, owner);
                 products.add(product);
             }
-
             fileReader.close();
         } catch (IOException exception) {
            Logger.getLogger(Buyer.class.getName()).log(Level.SEVERE, "Can't Read Properties File", exception);
         }
     }
 
-
     public void viewOurProduct(){
         new ProductTablePrinter().printProductTable();
         Shopping.getStarted();
     }
-
     private static boolean isFileEmpty(String filePath) {
         File file = new File(filePath);
         return file.length() == 0;
     }
-
     public void viewAndBuy(){
-
-        new ProductTablePrinter().printProductTable();
+        //new ProductTablePrinter().printProductTable();
+        new PrintTable(products).printItems();
          if (!AccountStatus.AccountStatusNote.getStatus()){
              System.out.println("Account is not Logged in \n Please Login or Sign Up to Continue");
              Shopping.getStarted();
@@ -98,7 +89,6 @@ public class Buyer {
             BuyProduct();
          }
     }
-
     public void BuyProduct() {
         if (!AccountStatus.AccountStatusNote.getStatus()){
             System.out.println("You are not Logged in \n Please Login to Buy the Product");
@@ -113,10 +103,19 @@ public class Buyer {
         chooseProduct= scanner.nextInt();
         System.out.println("Choose the Quantity ");
         int quantity= scanner.nextInt();
+        if (quantity>products.get(chooseProduct-1).getNo()){
+            System.out.println("Product is Out of Stock \nThe Product availability is "+products.get(chooseProduct-1).getNo());
+            System.out.println("Do you want to Continue Buying Y or N ?");
+            String options=scanner.next();
+            quantity=products.get(chooseProduct-1).getNo();
+            if (!options.equalsIgnoreCase("y")){
+                BuyProduct();
+            }
+        }
         Product product=products.get(chooseProduct-1);
         product.setNo(quantity);
         BuyedList.add(product);
-        System.out.println("Do you want to Continue Y or N ?");
+        System.out.println("Do you want to add the Product to the Cart Y or N ?");
         option=scanner.next();
         }while (option.equalsIgnoreCase("y"));
             logger1.info("The Products brought by the "+AccountStatus.AccountStatusNote.getUsername()+" \n "+BuyedList.toString());
@@ -125,7 +124,6 @@ public class Buyer {
                 total=total+product.getPrice()*product.getNo();
             }
             System.out.println("Total Price "+total);
-
             logger1.info("User had Buyed Products of worth  "+total);
         new PrintTable(BuyedList).printItemsWithCheckout();
         }

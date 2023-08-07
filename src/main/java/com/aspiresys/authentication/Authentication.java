@@ -25,18 +25,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Scanner;
-import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
 
 import static com.aspiresys.controller.Shopping.getStarted;
 import static java.nio.file.Paths.get;
-
-
 public class Authentication {
     private static final Logger logger = Logger.getLogger(Authentication.class.getName());
-    private static final String authentication;
+
     private static final String userFilePath;
 
     static {
@@ -45,20 +41,8 @@ public class Authentication {
             properties.load(reader);
         } catch (IOException exception) {
             Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, "Can't Read Properties File", exception);
-
         }
-        authentication = properties.getProperty("authentication");
         userFilePath = properties.getProperty("userFile");
-
-        try {
-            logger.setUseParentHandlers(false);
-            FileHandler fileHandler = new FileHandler(authentication);
-            SimpleFormatter formatter = new SimpleFormatter();
-            fileHandler.setFormatter(formatter);
-            logger.addHandler(fileHandler);
-        } catch (IOException e) {
-           logger.info("Error in Authentication");
-        }
     }
 
 
@@ -70,13 +54,11 @@ public class Authentication {
         String password = scanner.nextLine();
         Map<String, UserDetails> userDetailsMap = readUserDetailsFromCSV();
         if (userDetailsMap.containsKey(username)) {
-            System.out.println(userDetailsMap.get(username)+" "+userDetailsMap.get(username).password());
             UserDetails userDetails = userDetailsMap.get(username);
             if (password.equals(userDetails.password())) {
                 new AccountStatus(username, 1);
                 String role = userDetails.role();
                 System.out.println("Login Successful!");
-                logger.info("Account Logged in UserName "+AccountStatus.AccountStatusNote.getUsername());
                 if (role.equalsIgnoreCase("Seller")) {
                     new SellerPage().sellerAccess();
                 } else if (role.equalsIgnoreCase("admin")) {
@@ -105,7 +87,7 @@ public class Authentication {
                 userDetailsMap.put(username, userDetails);
             }
         } catch (IOException e) {
-            logger.info("Error in Reading User Details");
+            logger.info("Error in Reading User Details"+e.getMessage());
         }
 
         return userDetailsMap;
@@ -126,15 +108,12 @@ public class Authentication {
         String role = scanner.nextLine();
         System.out.println("Enter the Description: ");
         String description = scanner.nextLine();
-
         ValidatorAccount validator = new ValidatorAccount(username,password, role, phoneNumber, email);
         if (validator.validate()) {
             System.out.println("Account created successfully. Please log in.");
-
             String[] headers = {"Username", "Password", "Email", "PhoneNumber","Role","Description"};
             String[] userDetails1 = {username, password, email, phoneNumber,role,description};
             writeUserDetailsToCSV(headers, userDetails1);
-
             login();
         } else {
             System.out.println("Account creation failed. Please try again.");
@@ -151,13 +130,12 @@ public class Authentication {
             }
             csvPrinter.printRecord((Object[]) userDetails);
             csvPrinter.flush();
-        } catch (IOException e) {
-            logger.info("Error in Writing User Details");
+        } catch (IOException exception) {
+           logger.info("Error in Writing User Details" +exception.getMessage());
         }
     }
 
     public void logout() {
-        logger.info("Account Logged out UserName "+AccountStatus.AccountStatusNote.getUsername());
         System.out.println("You have been logged out from the account");
         new AccountStatus();
         getStarted();

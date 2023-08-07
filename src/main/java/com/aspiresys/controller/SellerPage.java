@@ -7,37 +7,51 @@ package com.aspiresys.controller;
 import com.aspiresys.model.account.AccountStatus;
 import com.aspiresys.view.PrintUserTable;
 import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVParser;
+import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
+
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.io.*;
 import java.util.Properties;
 import java.util.Scanner;
+import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.ArrayList;
-import java.util.List;
-import static com.aspiresys.controller.Admin.isFileEmpty;
+import java.util.logging.SimpleFormatter;
+
 public class SellerPage {
     private static final Logger logger = Logger.getLogger(Admin.class.getName());
     String ProductName, Brand, Model, ProductDescription;
     int Price, Rating, Number;
     private static final String productFilePath;
-    private static final String productLog;
+    private static final String exceptionFilePath;
+    private static final Logger exceptions = Logger.getLogger(SellerPage.class.getName());
+
     static {
         Properties properties = new Properties();
         try (Reader reader = new FileReader("E:\\Online_Shopping\\src\\main\\resources\\config.properties")) {
             properties.load(reader);
-        } catch (IOException exception) {
-            Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, "Can't Read Properties File", exception);
 
+        } catch (IOException exception) {
+            Logger.getLogger(SellerPage.class.getName()).log(Level.SEVERE, "Can't Read Properties File", exception);
         }
         productFilePath = properties.getProperty("productFile");
-        productLog=properties.getProperty("productLog");
+        exceptionFilePath = properties.getProperty("exception");
+        try{
+            exceptions.setUseParentHandlers(false);
+            FileHandler fileHandler1 = new FileHandler(exceptionFilePath);
+            SimpleFormatter formatter = new SimpleFormatter();
+            fileHandler1.setFormatter(formatter);
+            exceptions.addHandler(fileHandler1);
+        } catch (IOException e) {
+            exceptions.info("Error in Authentication");
+        }
+
+
     }
     public void sellerAccess() {
         System.out.println("""
@@ -72,33 +86,23 @@ public class SellerPage {
     }
 
     private void viewProduct() {
-        String ownerToView = AccountStatus.AccountStatusNote.getUsername();
-        new PrintUserTable().printTableBasedOnUser(productFilePath, ownerToView);
+        new PrintUserTable().printTableBasedOnUser(productFilePath, AccountStatus.AccountStatusNote.getUsername());
         sellerAccess();
     }
-
-
     private void editProduct() {
-        new PrintUserTable().printTableBasedOnUser(productFilePath, AccountStatus.AccountStatusNote.getUsername());
         String ownerToEdit = AccountStatus.AccountStatusNote.getUsername();
-
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the Product Name to edit: ");
         String productNameToEdit = scanner.nextLine();
-
         Path inputFilePath = Paths.get(productFilePath);
         Path outputFilePath = Paths.get("E:\\Online_Shopping\\src\\main\\resources\\products_temp.csv");
-
         try (Reader reader = Files.newBufferedReader(inputFilePath);
              CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT.withHeader());
              Writer writer = Files.newBufferedWriter(outputFilePath, StandardOpenOption.CREATE)) {
-
             CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT.withHeader("name", "brand", "model", "description", "price", "rating", "stock", "owner"));
-
             for (CSVRecord record : csvParser) {
                 String productName = record.get("name");
                 String owner = record.get("owner");
-
                 if (productName.equals(productNameToEdit) && owner.equals(ownerToEdit)) {
                     System.out.println("Enter the Product Name");
                     String productNameUpdated = scanner.nextLine();
@@ -114,7 +118,6 @@ public class SellerPage {
                     String ratingUpdated = scanner.nextLine();
                     System.out.println("Enter the Quantity");
                     String stockUpdated = scanner.nextLine();
-
                     csvPrinter.printRecord(
                             productNameUpdated,
                             brandUpdated,
@@ -129,111 +132,145 @@ public class SellerPage {
                     csvPrinter.printRecord(record);
                 }
             }
+            csvParser.close();
+            csvPrinter.close();
 
         } catch (IOException e) {
-            logger.log(Level.SEVERE, "Error in Writing Product Details", e);
+            exceptions.log(Level.SEVERE, "Error in Writing Product Details", e);
             return;
         }
         try {
             Files.delete(inputFilePath);
             Files.move(outputFilePath, inputFilePath);
             System.out.println("Product '" + productNameToEdit + "' edited successfully.");
-        } catch (IOException e) {
-            logger.log(Level.SEVERE, "Error in Writing Product Details", e);
+        } catch (IOException exception) {
+            exceptions.log(Level.SEVERE, "Error in Writing Product Details", exception);
         }
         sellerAccess();
     }
-    private void removeProduct() {
-        new PrintUserTable().printTableBasedOnUser(productFilePath, AccountStatus.AccountStatusNote.getUsername());
-
+    public void removeProduct() {
+        System.out.println("Enter the Product Name to delete: ");
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the Product Name to remove: ");
-        String productNameToRemove = scanner.nextLine();
-
+        String productNameToDelete = scanner.nextLine();
         Path inputFilePath = Paths.get(productFilePath);
         Path outputFilePath = Paths.get("E:\\Online_Shopping\\src\\main\\resources\\products_temp.csv");
-
-        List<CSVRecord> recordsToRemove = new ArrayList<>();
-
         try (Reader reader = Files.newBufferedReader(inputFilePath);
              CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT.withHeader());
              Writer writer = Files.newBufferedWriter(outputFilePath, StandardOpenOption.CREATE)) {
-
             CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT.withHeader("name", "brand", "model", "description", "price", "rating", "stock", "owner"));
-
             for (CSVRecord record : csvParser) {
                 String productName = record.get("name");
-                String owner = record.get("owner");
-
-                if (productName.equals(productNameToRemove) && owner.equals(AccountStatus.AccountStatusNote.getUsername())) {
-                    recordsToRemove.add(record);
-                } else {
-                    // Write the record to the new CSV file if it doesn't match the product to be removed
+                if (!productName.equals(productNameToDelete)) {
                     csvPrinter.printRecord(record);
                 }
             }
 
-        } catch (IOException e) {
-            logger.log(Level.SEVERE, "Error in Reading/Writing Product Details", e);
-            return;
+            reader.close();
+            csvParser.close();
+            csvPrinter.flush();
+            csvPrinter.close();
+        } catch (IOException exception) {
+            exceptions.info("Error in Removing Product Details "+exception);
         }
 
-        // Check if any records were found and removed
-        if (recordsToRemove.isEmpty()) {
-            System.out.println("Product not found or you don't have permission to remove this product.");
-            return;
-        }
-
-        System.out.println("Product removed successfully!");
-
-        // Replace the original file with the updated one
         try {
             Files.delete(inputFilePath);
             Files.move(outputFilePath, inputFilePath);
-        } catch (IOException e) {
-            logger.log(Level.SEVERE, "Error in Writing Product Details", e);
+            System.out.println("Product '" + productNameToDelete + "' deleted successfully.");
+        } catch (IOException exception) {
+            exceptions.info("Error in Removing Product File " + exception);
         }
         sellerAccess();
     }
-        
 
 
-    private void addProduct() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the Product Name");
-        ProductName = scanner.nextLine();
-        System.out.println("Enter the Product Brand");
-        Brand = scanner.nextLine();
-        System.out.println("Enter the Product Model");
-        Model = scanner.nextLine();
-        System.out.println("Enter the Product Description");
-        ProductDescription = scanner.nextLine();
-        System.out.println("Enter the Product Price in  R.S ");
-        Price = scanner.nextInt();
-        System.out.println("Enter the Rating");
-        Rating = scanner.nextInt();
-        System.out.println("Enter the Quantity");
-        Number = scanner.nextInt();
-        scanner.nextLine();
-        String csvFilePath = "E:\\Online_Shopping\\src\\main\\resources\\products.csv";
-        try {
-            boolean isFileEmpty = isFileEmpty(csvFilePath);
 
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(csvFilePath, true));
-                 CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT)) {
+//    private void addProduct() {
+//        Scanner scanner = new Scanner(System.in);
+//        System.out.println("Enter the Product Name");
+//        ProductName = scanner.nextLine();
+//        System.out.println("Enter the Product Brand");
+//        Brand = scanner.nextLine();
+//        System.out.println("Enter the Product Model");
+//        Model = scanner.nextLine();
+//        System.out.println("Enter the Product Description");
+//        ProductDescription = scanner.nextLine();
+//        System.out.println("Enter the Product Price in  R.S ");
+//        Price = scanner.nextInt();
+//        System.out.println("Enter the Rating");
+//        Rating = scanner.nextInt();
+//        System.out.println("Enter the Quantity");
+//        Number = scanner.nextInt();
+//        scanner.nextLine();
+//        String csvFilePath = "E:\\Online_Shopping\\src\\main\\resources\\products.csv";
+//        try {
+//            boolean isFileEmpty = isFileEmpty(csvFilePath);
+//
+//            try (BufferedWriter writer = new BufferedWriter(new FileWriter(csvFilePath, true));
+//                 CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT)) {
+//                if (!isFileEmpty) {
+//                    csvPrinter.printRecord("name", "brand", "model", "description", "price", "rating", "stock", "Owner");
+//                }
+//
+//                csvPrinter.printRecord(ProductName, Brand, Model, ProductDescription, Price, Rating, Number, AccountStatus.AccountStatusNote.getUsername());
+//                csvPrinter.flush();
+//                writer.flush();
+//                writer.close();
+//                csvPrinter.close();
+//                System.out.println("Data appended to CSV file successfully!");
+//
+//            }
+//
+//        } catch (IOException e) {
+//            logger.info("Error in Writing User Details");
+//        }
+//        sellerAccess();
+//    }
+public void addProduct() {
+    Scanner scanner = new Scanner(System.in);
+    System.out.println("Enter the Product Name");
+    ProductName = scanner.nextLine();
+    System.out.println("Enter the Product Brand");
+    Brand = scanner.nextLine();
+    System.out.println("Enter the Product Model");
+    Model = scanner.nextLine();
+    System.out.println("Enter the Product Description");
+    ProductDescription = scanner.nextLine();
+    System.out.println("Enter the Product Price in  R.S ");
+    Price = scanner.nextInt();
+    System.out.println("Enter the Rating");
+    Rating = scanner.nextInt();
+    System.out.println("Enter the Quantity");
+    Number = scanner.nextInt();
+    scanner.nextLine();
 
-                // If the file is empty, print the header
-                if (!isFileEmpty) {
-                    csvPrinter.printRecord("name", "brand", "model", "description", "price", "rating", "stock", "Owner");
-                }
-
-                csvPrinter.printRecord(ProductName, Brand, Model, ProductDescription, Price, Rating, Number, AccountStatus.AccountStatusNote.getUsername());
-                csvPrinter.flush();
-                System.out.println("Data appended to CSV file successfully!");
+    try {
+        boolean isFileEmpty = isFileEmpty(productFilePath);
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(productFilePath, true));
+             CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT)) {
+            System.out.println(isFileEmpty);
+            if (isFileEmpty) {
+                csvPrinter.printRecord("name", "brand", "model", "description", "price", "rating", "stock", "Owner");
             }
-        } catch (IOException e) {
-            logger.info("Error in Writing User Details");
+
+            csvPrinter.printRecord(ProductName, Brand, Model, ProductDescription, Price, Rating, Number, AccountStatus.AccountStatusNote.getUsername());
+            csvPrinter.flush();
+            System.out.println("Data appended to CSV file successfully!");
         }
-        sellerAccess();
+    } catch (IOException exception) {
+        exceptions.info("Error in Writing User Details "+exception);
+    }
+    sellerAccess();
+}
+    public static boolean isFileEmpty(String filePath) {
+        try {
+            long fileSize = Files.size(Paths.get(filePath));
+            System.out.println("File Size "+fileSize);
+            return fileSize == 0;
+        } catch (Exception exception) {
+
+            exceptions.info("Checking the file is Empty "+exception);
+            return false;
+        }
     }
 }
