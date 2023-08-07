@@ -1,10 +1,5 @@
-Aug 07, 2023 11:06:15 AM com.aspiresys.controller.Buyer BuyProduct
+Aug 07, 2023 12:21:30 PM com.aspiresys.controller.Buyer BuyProduct
 INFO: The Products brought by the Killer 
- [Product{ProductName='Smartphone', Brand='AwesomeTech', Model='XT1000', ProductDescription='Powerful smartphone with great features', Owner='admin', Price=799, Rating=4, No=51}, Product{ProductName='Headphones', Brand='SoundMaster', Model='HM3000', ProductDescription='Noise-canceling headphones for immersive sound', Owner='admin', Price=149, Rating=4, No=2}]
-Aug 07, 2023 11:06:15 AM com.aspiresys.controller.Buyer BuyProduct
-INFO: User had Buyed Products of worth  41047
-Aug 07, 2023 11:06:53 AM com.aspiresys.controller.Buyer BuyProduct
-INFO: The Products brought by the Killer 
- [Product{ProductName='Smartphone', Brand='AwesomeTech', Model='XT1000', ProductDescription='Powerful smartphone with great features', Owner='admin', Price=799, Rating=4, No=51}, Product{ProductName='Headphones', Brand='SoundMaster', Model='HM3000', ProductDescription='Noise-canceling headphones for immersive sound', Owner='admin', Price=149, Rating=4, No=2}, Product{ProductName='Laptop', Brand='SuperLaptops', Model='LX200', ProductDescription='High-performance laptop for gaming and work', Owner='Subash', Price=1499, Rating=4, No=4}]
-Aug 07, 2023 11:06:54 AM com.aspiresys.controller.Buyer BuyProduct
-INFO: User had Buyed Products of worth  47043
+ [Product{ProductName='Youtube', Brand='Google', Model='Video', ProductDescription='Entertainment', Owner='Devild24', Price=50000, Rating=5, No=5}]
+Aug 07, 2023 12:21:30 PM com.aspiresys.controller.Buyer BuyProduct
+INFO: User had Buyed Products of worth  250000

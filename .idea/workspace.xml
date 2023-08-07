@@ -5,29 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bdf80f97-2d1a-4dea-8948-c70810fda250" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/logs/exception.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/aspiresys/Online_Shopping.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/Online_Shopping.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/aspiresys/authentication/Authentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/authentication/Authentication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/aspiresys/authentication/ValidatorAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/authentication/ValidatorAccount.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/aspiresys/controller/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/controller/Admin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/aspiresys/controller/Buyer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/controller/Buyer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/aspiresys/controller/SellerPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/controller/SellerPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/aspiresys/logs/authentication.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/logs/authentication.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/aspiresys/logs/product.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/aspiresys/model/account/AccountStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/model/account/AccountStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/aspiresys/view/PrintTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/view/PrintTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/aspiresys/view/PrintUserTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/view/PrintUserTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/products.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/products.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/user_details.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/user_details.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/aspiresys/logs/product.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/logs/product.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/aspiresys/authentication/Authentication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/aspiresys/authentication/Authentication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/aspiresys/authentication/ValidatorAccount.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/aspiresys/authentication/ValidatorAccount.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/aspiresys/controller/Admin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/aspiresys/controller/Admin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/aspiresys/controller/Buyer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/aspiresys/controller/Buyer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/aspiresys/controller/SellerPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/aspiresys/controller/SellerPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/aspiresys/model/account/AccountStatus$AccountStatusNote.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/aspiresys/model/account/AccountStatus$AccountStatusNote.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/aspiresys/model/account/AccountStatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/aspiresys/model/account/AccountStatus.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/aspiresys/view/PrintUserTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/aspiresys/view/PrintUserTable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/config.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/products.csv" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/products.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -16,7 +16,7 @@ public class ValidatorAccount {
     private final String PHONE_NUMBER;
     private final String EMAIL;
     private static final String USERNAME_PATTERN = "^[a-zA-Z0-9_]{5,20}$";
-    private static final Pattern pattern = Pattern.compile(USERNAME_PATTERN);
+    private static final Pattern PATTERN = Pattern.compile(USERNAME_PATTERN);
 
     static ArrayList<String> invalidNumbers = new ArrayList<>();
     static {
@@ -48,7 +48,7 @@ public class ValidatorAccount {
             if (username == null || username.isEmpty()) {
                 return false;
             }
-            Matcher matcher = pattern.matcher(username);
+            Matcher matcher = PATTERN.matcher(username);
             if (matcher.matches()) {
                 return true;
             }

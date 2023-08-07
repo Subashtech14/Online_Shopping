@@ -27,7 +27,7 @@ import static java.nio.file.Paths.get;
 
 public class Admin {
 
-    private static final Logger logger = Logger.getLogger(Admin.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(Admin.class.getName());
     String ProductName, Brand, Model, ProductDescription;
     int Price, Rating, Number;
     private static final String productFilePath;
@@ -114,7 +114,7 @@ public class Admin {
             csvPrinter.printRecord((Object[]) userDetails);
             csvPrinter.flush();
         } catch (IOException e) {
-            logger.info(e.getMessage());
+            LOGGER.info(e.getMessage());
         }
     }
 
@@ -135,7 +135,7 @@ public class Admin {
                 }
             }
         } catch (IOException exception) {
-            logger.info("Error in Removing User Account "+exception);
+            LOGGER.info("Error in Removing User Account "+exception);
         }
         // Replace the original file with the updated one
         try {
@@ -143,7 +143,7 @@ public class Admin {
             Files.move(outputFilePath, inputFilePath);
             System.out.println("User account '" + usernameToDelete + "' deleted successfully.");
         } catch (IOException exception) {
-            logger.info("Error in Removing User Account "+exception);
+            LOGGER.info("Error in Removing User Account "+exception);
         }
         adminAccess();
     }
@@ -209,7 +209,7 @@ public class Admin {
                 System.out.println("Data appended to CSV file successfully!");
             }
         } catch (IOException exception) {
-            logger.info("Error in Writing User Details "+exception);
+            LOGGER.info("Error in Writing User Details "+exception);
         }
         adminAccess();
     }
@@ -231,7 +231,7 @@ public class Admin {
                 }
             }
         } catch (IOException exception) {
-            logger.info("Error in Removing Product Details "+exception);
+            LOGGER.info("Error in Removing Product Details "+exception);
         }
 
         try {
@@ -239,7 +239,7 @@ public class Admin {
             Files.move(outputFilePath, inputFilePath);
             System.out.println("Product '" + productNameToDelete + "' deleted successfully.");
         } catch (IOException exception) {
-            logger.info("Error in Removing Product Details "+exception);
+            LOGGER.info("Error in Removing Product Details "+exception);
         }
         adminAccess();
     }
@@ -289,7 +289,7 @@ public class Admin {
                 }
             }
         } catch (IOException exception) {
-            logger.info("Error in Writing Product Details "+exception);
+            LOGGER.info("Error in Writing Product Details "+exception);
         }
         // Replace the original file with the updated one
         try {
@@ -297,7 +297,7 @@ public class Admin {
             Files.move(outputFilePath, inputFilePath);
             System.out.println("Product '" + productNameToEdit + "' edited successfully.");
         } catch (IOException exception) {
-            logger.info("Error in Writing Product Details "+exception);
+            LOGGER.info("Error in Writing Product Details "+exception);
         }
         adminAccess();
     }
@@ -308,7 +308,7 @@ public class Admin {
     }
 
     public void logOut() {
-        logger.info("Account Logged out UserName " + AccountStatus.AccountStatusNote.getUsername());
+        LOGGER.info("Account Logged out UserName " + AccountStatus.AccountStatusNote.getUsername());
         System.out.println("You have been logged out from the account");
         new AccountStatus();
         Shopping.getStarted();
@@ -320,7 +320,7 @@ public class Admin {
             System.out.println("File Size "+fileSize);
             return fileSize == 0;
         } catch (Exception exception) {
-            logger.info("Checking the file is Empty "+exception);
+            LOGGER.info("Checking the file is Empty "+exception);
             return false;
         }
     }
@@ -349,14 +349,14 @@ public class Admin {
                 }
             }
         } catch (IOException exception) {
-            logger.info("Error in Writing User Details "+exception);
+            LOGGER.info("Error in Writing User Details "+exception);
         }
         // Replace the original file with the updated one
         try {
             Files.delete(inputFilePath);
             Files.move(outputFilePath, inputFilePath);
         } catch (IOException exception) {
-            logger.info("Error in Writing User Details "+exception);
+            LOGGER.info("Error in Writing User Details "+exception);
         }
         adminAccess();
     }

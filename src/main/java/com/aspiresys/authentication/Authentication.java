@@ -31,7 +31,7 @@ import java.util.logging.Logger;
 import static com.aspiresys.controller.Shopping.getStarted;
 import static java.nio.file.Paths.get;
 public class Authentication {
-    private static final Logger logger = Logger.getLogger(Authentication.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(Authentication.class.getName());
 
     private static final String userFilePath;
 
@@ -87,7 +87,7 @@ public class Authentication {
                 userDetailsMap.put(username, userDetails);
             }
         } catch (IOException e) {
-            logger.info("Error in Reading User Details"+e.getMessage());
+            LOGGER.info("Error in Reading User Details"+e.getMessage());
         }
 
         return userDetailsMap;
@@ -131,7 +131,7 @@ public class Authentication {
             csvPrinter.printRecord((Object[]) userDetails);
             csvPrinter.flush();
         } catch (IOException exception) {
-           logger.info("Error in Writing User Details" +exception.getMessage());
+           LOGGER.info("Error in Writing User Details" +exception.getMessage());
         }
     }
 

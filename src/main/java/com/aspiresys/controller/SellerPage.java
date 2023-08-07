@@ -24,12 +24,12 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
 public class SellerPage {
-    private static final Logger logger = Logger.getLogger(Admin.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(Admin.class.getName());
     String ProductName, Brand, Model, ProductDescription;
     int Price, Rating, Number;
-    private static final String productFilePath;
-    private static final String exceptionFilePath;
-    private static final Logger exceptions = Logger.getLogger(SellerPage.class.getName());
+    private static final String PRODUCT_FILE_PATH;
+    private static final String EXCEPTION_FILE_PATH;
+    private static final Logger EXCEPTIONS = Logger.getLogger(SellerPage.class.getName());
 
     static {
         Properties properties = new Properties();
@@ -39,16 +39,16 @@ public class SellerPage {
         } catch (IOException exception) {
             Logger.getLogger(SellerPage.class.getName()).log(Level.SEVERE, "Can't Read Properties File", exception);
         }
-        productFilePath = properties.getProperty("productFile");
-        exceptionFilePath = properties.getProperty("exception");
+        PRODUCT_FILE_PATH = properties.getProperty("productFile");
+        EXCEPTION_FILE_PATH = properties.getProperty("exception");
         try{
-            exceptions.setUseParentHandlers(false);
-            FileHandler fileHandler1 = new FileHandler(exceptionFilePath);
+            EXCEPTIONS.setUseParentHandlers(false);
+            FileHandler fileHandler1 = new FileHandler(EXCEPTION_FILE_PATH);
             SimpleFormatter formatter = new SimpleFormatter();
             fileHandler1.setFormatter(formatter);
-            exceptions.addHandler(fileHandler1);
+            EXCEPTIONS.addHandler(fileHandler1);
         } catch (IOException e) {
-            exceptions.info("Error in Authentication");
+            EXCEPTIONS.info("Error in Authentication");
         }
 
 
@@ -79,14 +79,14 @@ public class SellerPage {
     }
 
     private void logOut() {
-        logger.info("Account Logged out UserName " + AccountStatus.AccountStatusNote.getUsername());
+        LOGGER.info("Account Logged out UserName " + AccountStatus.AccountStatusNote.getUsername());
         System.out.println("You have been logged out from the account");
         new AccountStatus();
         Shopping.getStarted();
     }
 
     private void viewProduct() {
-        new PrintUserTable().printTableBasedOnUser(productFilePath, AccountStatus.AccountStatusNote.getUsername());
+        new PrintUserTable().printTableBasedOnUser(PRODUCT_FILE_PATH, AccountStatus.AccountStatusNote.getUsername());
         sellerAccess();
     }
     private void editProduct() {
@@ -94,7 +94,7 @@ public class SellerPage {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the Product Name to edit: ");
         String productNameToEdit = scanner.nextLine();
-        Path inputFilePath = Paths.get(productFilePath);
+        Path inputFilePath = Paths.get(PRODUCT_FILE_PATH);
         Path outputFilePath = Paths.get("E:\\Online_Shopping\\src\\main\\resources\\products_temp.csv");
         try (Reader reader = Files.newBufferedReader(inputFilePath);
              CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT.withHeader());
@@ -136,7 +136,7 @@ public class SellerPage {
             csvPrinter.close();
 
         } catch (IOException e) {
-            exceptions.log(Level.SEVERE, "Error in Writing Product Details", e);
+            EXCEPTIONS.log(Level.SEVERE, "Error in Writing Product Details", e);
             return;
         }
         try {
@@ -144,7 +144,7 @@ public class SellerPage {
             Files.move(outputFilePath, inputFilePath);
             System.out.println("Product '" + productNameToEdit + "' edited successfully.");
         } catch (IOException exception) {
-            exceptions.log(Level.SEVERE, "Error in Writing Product Details", exception);
+            EXCEPTIONS.log(Level.SEVERE, "Error in Writing Product Details", exception);
         }
         sellerAccess();
     }
@@ -152,7 +152,7 @@ public class SellerPage {
         System.out.println("Enter the Product Name to delete: ");
         Scanner scanner = new Scanner(System.in);
         String productNameToDelete = scanner.nextLine();
-        Path inputFilePath = Paths.get(productFilePath);
+        Path inputFilePath = Paths.get(PRODUCT_FILE_PATH);
         Path outputFilePath = Paths.get("E:\\Online_Shopping\\src\\main\\resources\\products_temp.csv");
         try (Reader reader = Files.newBufferedReader(inputFilePath);
              CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT.withHeader());
@@ -170,7 +170,7 @@ public class SellerPage {
             csvPrinter.flush();
             csvPrinter.close();
         } catch (IOException exception) {
-            exceptions.info("Error in Removing Product Details "+exception);
+            EXCEPTIONS.info("Error in Removing Product Details "+exception);
         }
 
         try {
@@ -178,55 +178,11 @@ public class SellerPage {
             Files.move(outputFilePath, inputFilePath);
             System.out.println("Product '" + productNameToDelete + "' deleted successfully.");
         } catch (IOException exception) {
-            exceptions.info("Error in Removing Product File " + exception);
+            EXCEPTIONS.info("Error in Removing Product File " + exception);
         }
         sellerAccess();
     }
-
-
-
-//    private void addProduct() {
-//        Scanner scanner = new Scanner(System.in);
-//        System.out.println("Enter the Product Name");
-//        ProductName = scanner.nextLine();
-//        System.out.println("Enter the Product Brand");
-//        Brand = scanner.nextLine();
-//        System.out.println("Enter the Product Model");
-//        Model = scanner.nextLine();
-//        System.out.println("Enter the Product Description");
-//        ProductDescription = scanner.nextLine();
-//        System.out.println("Enter the Product Price in  R.S ");
-//        Price = scanner.nextInt();
-//        System.out.println("Enter the Rating");
-//        Rating = scanner.nextInt();
-//        System.out.println("Enter the Quantity");
-//        Number = scanner.nextInt();
-//        scanner.nextLine();
-//        String csvFilePath = "E:\\Online_Shopping\\src\\main\\resources\\products.csv";
-//        try {
-//            boolean isFileEmpty = isFileEmpty(csvFilePath);
-//
-//            try (BufferedWriter writer = new BufferedWriter(new FileWriter(csvFilePath, true));
-//                 CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT)) {
-//                if (!isFileEmpty) {
-//                    csvPrinter.printRecord("name", "brand", "model", "description", "price", "rating", "stock", "Owner");
-//                }
-//
-//                csvPrinter.printRecord(ProductName, Brand, Model, ProductDescription, Price, Rating, Number, AccountStatus.AccountStatusNote.getUsername());
-//                csvPrinter.flush();
-//                writer.flush();
-//                writer.close();
-//                csvPrinter.close();
-//                System.out.println("Data appended to CSV file successfully!");
-//
-//            }
-//
-//        } catch (IOException e) {
-//            logger.info("Error in Writing User Details");
-//        }
-//        sellerAccess();
-//    }
-public void addProduct() {
+    public void addProduct() {
     Scanner scanner = new Scanner(System.in);
     System.out.println("Enter the Product Name");
     ProductName = scanner.nextLine();
@@ -245,8 +201,8 @@ public void addProduct() {
     scanner.nextLine();
 
     try {
-        boolean isFileEmpty = isFileEmpty(productFilePath);
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(productFilePath, true));
+        boolean isFileEmpty = isFileEmpty(PRODUCT_FILE_PATH);
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(PRODUCT_FILE_PATH, true));
              CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT)) {
             System.out.println(isFileEmpty);
             if (isFileEmpty) {
@@ -258,7 +214,7 @@ public void addProduct() {
             System.out.println("Data appended to CSV file successfully!");
         }
     } catch (IOException exception) {
-        exceptions.info("Error in Writing User Details "+exception);
+        EXCEPTIONS.info("Error in Writing User Details "+exception);
     }
     sellerAccess();
 }
@@ -269,7 +225,7 @@ public void addProduct() {
             return fileSize == 0;
         } catch (Exception exception) {
 
-            exceptions.info("Checking the file is Empty "+exception);
+            EXCEPTIONS.info("Checking the file is Empty "+exception);
             return false;
         }
     }

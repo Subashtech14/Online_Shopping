@@ -27,9 +27,9 @@ import java.util.logging.SimpleFormatter;
 public class Buyer {
     static ArrayList<Product> BuyedList = new ArrayList<>();
     static  ArrayList<Product> products=new ArrayList<>();
-    private static final Logger logger1 = Logger.getLogger(Buyer.class.getName());
-    private static final String productFilePath;
-    private static final String productLog;
+    private static final Logger LOGGER = Logger.getLogger(Buyer.class.getName());
+    private static final String PRODUCT_FILE_PATH;
+    private static final String PRODUCT_LOG_PATH;
 
     static {
         Properties properties = new Properties();
@@ -38,20 +38,20 @@ public class Buyer {
         } catch (IOException exception) {
             Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, "Can't Read Properties File", exception);
         }
-        productFilePath = properties.getProperty("productFile");
-        productLog=properties.getProperty("productLog");
+        PRODUCT_FILE_PATH = properties.getProperty("productFile");
+        PRODUCT_LOG_PATH=properties.getProperty("productLog");
         try{
-            logger1.setUseParentHandlers(false);
-            FileHandler fileHandler1 = new FileHandler(productLog);
+            LOGGER.setUseParentHandlers(false);
+            FileHandler fileHandler1 = new FileHandler(PRODUCT_LOG_PATH);
             SimpleFormatter formatter = new SimpleFormatter();
             fileHandler1.setFormatter(formatter);
-            logger1.addHandler(fileHandler1);
+            LOGGER.addHandler(fileHandler1);
         } catch (IOException exception) {
-           logger1.info("Error in Authentication "+exception);
+           LOGGER.info("Error in Authentication "+exception);
         }
 
         try {
-            FileReader fileReader = new FileReader(productFilePath);
+            FileReader fileReader = new FileReader(PRODUCT_FILE_PATH);
             CSVParser parser = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(fileReader);
             for (CSVRecord record : parser) {
                 String name = record.get("name");
@@ -99,8 +99,14 @@ public class Buyer {
         String option;
         Scanner scanner=new Scanner(System.in);
         do{
+
         System.out.println("Choose the Product Number to Buy the Product ");
         chooseProduct= scanner.nextInt();
+
+        if (chooseProduct>products.size()){
+            System.out.println("There is no Product available \n Please choose another Product");
+            BuyProduct();
+        }
         System.out.println("Choose the Quantity ");
         int quantity= scanner.nextInt();
         if (quantity>products.get(chooseProduct-1).getNo()){
@@ -115,16 +121,16 @@ public class Buyer {
         Product product=products.get(chooseProduct-1);
         product.setNo(quantity);
         BuyedList.add(product);
-        System.out.println("Do you want to add the Product to the Cart Y or N ?");
+        System.out.println("Do you want to Continue Buying Y or N ?");
         option=scanner.next();
         }while (option.equalsIgnoreCase("y"));
-            logger1.info("The Products brought by the "+AccountStatus.AccountStatusNote.getUsername()+" \n "+BuyedList.toString());
+            LOGGER.info("The Products brought by the "+AccountStatus.AccountStatusNote.getUsername()+" \n "+BuyedList.toString());
         int total = 0;
             for (Product product:BuyedList){
                 total=total+product.getPrice()*product.getNo();
             }
             System.out.println("Total Price "+total);
-            logger1.info("User had Buyed Products of worth  "+total);
+            LOGGER.info("User had Buyed Products of worth  "+total);
         new PrintTable(BuyedList).printItemsWithCheckout();
         }
     }
