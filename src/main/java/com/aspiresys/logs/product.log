@@ -1,5 +1,5 @@
-Aug 07, 2023 12:21:30 PM com.aspiresys.controller.Buyer BuyProduct
+Aug 09, 2023 11:35:27 AM com.aspiresys.controller.Buyer BuyProduct
 INFO: The Products brought by the Killer 
- [Product{ProductName='Youtube', Brand='Google', Model='Video', ProductDescription='Entertainment', Owner='Devild24', Price=50000, Rating=5, No=5}]
-Aug 07, 2023 12:21:30 PM com.aspiresys.controller.Buyer BuyProduct
-INFO: User had Buyed Products of worth  250000
+ [Product{ProductName='Smartphone', Brand='AwesomeTech', Model='XT1000', ProductDescription='Powerful smartphone with great features', Owner='admin', Price=799, Rating=4, No=45}]
+Aug 09, 2023 11:35:27 AM com.aspiresys.controller.Buyer BuyProduct
+INFO: User had Buyed Products of worth  35955

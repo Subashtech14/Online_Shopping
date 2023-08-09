@@ -24,7 +24,6 @@ public class ValidatorAccountTest {
         String role = "Buyer";
         String phoneNumber = "9876543210";
         String email = "user@example.com";
-
         ValidatorAccount validator = new ValidatorAccount(userName, password, role, phoneNumber, email);
         boolean isValid = validator.validate();
         Assert.assertFalse(isValid);

@@ -109,7 +109,7 @@ public class Buyer {
         }
         System.out.println("Choose the Quantity ");
         int quantity= scanner.nextInt();
-        if (quantity>products.get(chooseProduct-1).getNo()){
+        if (quantity>products.get(chooseProduct-1).getNo() || quantity<=0){
             System.out.println("Product is Out of Stock \nThe Product availability is "+products.get(chooseProduct-1).getNo());
             System.out.println("Do you want to Continue Buying Y or N ?");
             String options=scanner.next();
