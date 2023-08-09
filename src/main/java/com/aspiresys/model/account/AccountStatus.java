@@ -2,6 +2,7 @@ package com.aspiresys.model.account;
 
 import com.aspiresys.controller.Admin;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
@@ -14,7 +15,7 @@ import java.util.logging.SimpleFormatter;
 public class AccountStatus {
     private static final Logger logger = Logger.getLogger(AccountStatus.class.getName());
     private static final String authentication;
-    private static String username=null;
+    private static String username;
     private static int status=0;
     static {
         Properties properties = new Properties();
@@ -26,13 +27,18 @@ public class AccountStatus {
         authentication = properties.getProperty("authentication");
         try {
             logger.setUseParentHandlers(false);
-            FileHandler fileHandler = new FileHandler(authentication);
+
+            File file = new File(authentication);
+            boolean append = file.exists();
+            FileHandler fileHandler = new FileHandler(authentication, append);
             SimpleFormatter formatter = new SimpleFormatter();
             fileHandler.setFormatter(formatter);
+
             logger.addHandler(fileHandler);
         } catch (IOException e) {
             logger.info("Error in Authentication");
         }
+
     }
     public AccountStatus(String username, int status) {
         AccountStatus.username = username;
@@ -40,9 +46,10 @@ public class AccountStatus {
         logger.info("Account Logged in UserName " + username);
     }
     public AccountStatus(){
-    AccountStatus.username=null;
-    AccountStatus.status=0;
-    logger.info("Account Logged out UserName " + username);
+        logger.info("Account Logged out UserName " + username);
+        AccountStatus.username=null;
+        AccountStatus.status=0;
+
     }
 
 

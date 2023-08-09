@@ -42,7 +42,9 @@ public class Buyer {
         PRODUCT_LOG_PATH=properties.getProperty("productLog");
         try{
             LOGGER.setUseParentHandlers(false);
-            FileHandler fileHandler1 = new FileHandler(PRODUCT_LOG_PATH);
+            File file = new File(PRODUCT_LOG_PATH);
+            boolean exists = file.exists();
+            FileHandler fileHandler1 = new FileHandler(PRODUCT_LOG_PATH, exists);
             SimpleFormatter formatter = new SimpleFormatter();
             fileHandler1.setFormatter(formatter);
             LOGGER.addHandler(fileHandler1);
@@ -100,7 +102,7 @@ public class Buyer {
         Scanner scanner=new Scanner(System.in);
         do{
 
-        System.out.println("Choose the Product Number to Buy the Product ");
+        System.out.println("Choose the Product Number(S.No) to Buy the Product ");
         chooseProduct= scanner.nextInt();
 
         if (chooseProduct>products.size()){

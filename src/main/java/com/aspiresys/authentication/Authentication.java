@@ -55,7 +55,7 @@ public class Authentication {
         Map<String, UserDetails> userDetailsMap = readUserDetailsFromCSV();
         if (userDetailsMap.containsKey(username)) {
             UserDetails userDetails = userDetailsMap.get(username);
-            if (password.equals(userDetails.password())) {
+            if (username.equals(userDetails.username()) && password.equals(userDetails.password())) {
                 new AccountStatus(username, 1);
                 String role = userDetails.role();
                 System.out.println("Login Successful!");
@@ -72,6 +72,10 @@ public class Authentication {
                 login();
             }
         }
+        else {
+            System.out.println("Login Failed. Please try again.");
+            login();
+        }
 
 
     }
@@ -83,7 +87,7 @@ public class Authentication {
                 String username = csvRecord.get(0);
                 String password = csvRecord.get(1);
                 String role = csvRecord.get(4);
-                UserDetails userDetails = new UserDetails(password, role);
+                UserDetails userDetails = new UserDetails(username,password, role);
                 userDetailsMap.put(username, userDetails);
             }
         } catch (IOException e) {

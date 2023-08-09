@@ -51,14 +51,14 @@ public class PrintTable {
 
     public void printItemsWithCheckout() {
         int cellWidth = 18; // Adjust the cell width as needed
-        int tableWidth = (cellWidth + 3) * 9; // Calculate table width based on cell width and number of columns (including S.No)
+        int tableWidth = (cellWidth + 3) * 8; // Calculate table width based on cell width and number of columns
 
         // Print table--top border
         System.out.println("+" + "-".repeat(tableWidth - 2) + "+");
 
         // Print table header
-        System.out.printf("| %5s | %5s | %-" + (cellWidth + 5) + "s | %-" + cellWidth + "s | %-" + cellWidth + "s | %-" + cellWidth + "s | %-" + cellWidth + "s | %-" + cellWidth + "s | %-" + cellWidth + "s |\n",
-                "S.No", "No", "Product Name", "Brand", "Model", "Description", "Price", "Rating", "Quantity");
+        System.out.printf("| %5s | %-" + (cellWidth + 5) + "s | %-" + cellWidth + "s | %-" + cellWidth + "s | %-" + cellWidth + "s | %-" + cellWidth + "s | %-" + cellWidth + "s | %-" + cellWidth + "s |\n",
+                "S.No", "Product Name", "Brand", "Model", "Description", "Price", "Rating", "Quantity");
 
         // Print table mid border
         System.out.println("+" + "-".repeat(tableWidth - 2) + "+");
@@ -66,9 +66,8 @@ public class PrintTable {
         // Print table rows
         int serialNumber = 1;
         for (Product product : products) {
-            System.out.printf("| %5d | %5d | %-" + (cellWidth + 5) + "." + (cellWidth + 5) + "s | %-" + cellWidth + "." + cellWidth + "s | %-" + cellWidth + "." + cellWidth + "s | %-" + cellWidth + "." + cellWidth + "s | %-" + cellWidth + "d | %-" + cellWidth + "d | %-" + cellWidth + "d |\n",
+            System.out.printf("| %5d | %-" + (cellWidth + 5) + "." + (cellWidth + 5) + "s | %-" + cellWidth + "." + cellWidth + "s | %-" + cellWidth + "." + cellWidth + "s | %-" + cellWidth + "." + cellWidth + "s | %-" + cellWidth + "d | %-" + cellWidth + "d | %-" + cellWidth + "d |\n",
                     serialNumber,
-                    product.getNo(),
                     product.getProductName(),
                     product.getBrand(),
                     product.getModel(),
@@ -82,6 +81,7 @@ public class PrintTable {
             System.out.println("+" + "-".repeat(tableWidth - 2) + "+");
             serialNumber++;
         }
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Do you want to checkout Y or N ?");
         String option = scanner.nextLine();

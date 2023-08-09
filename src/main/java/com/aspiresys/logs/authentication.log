@@ -1,4 +1,10 @@
-Aug 09, 2023 11:35:19 AM com.aspiresys.model.account.AccountStatus <init>
+Aug 09, 2023 11:48:45 AM com.aspiresys.model.account.AccountStatus <init>
 INFO: Account Logged in UserName Killer
-Aug 09, 2023 11:36:12 AM com.aspiresys.model.account.AccountStatus <init>
-INFO: Account Logged out UserName null
+Aug 09, 2023 11:49:36 AM com.aspiresys.model.account.AccountStatus <init>
+INFO: Account Logged out UserName Killer
+Aug 09, 2023 11:57:12 AM com.aspiresys.model.account.AccountStatus <init>
+INFO: Account Logged in UserName Killer
+Aug 09, 2023 11:57:20 AM com.aspiresys.model.account.AccountStatus <init>
+INFO: Account Logged out UserName Killer
+Aug 09, 2023 11:57:27 AM com.aspiresys.model.account.AccountStatus <init>
+INFO: Account Logged in UserName Killer
