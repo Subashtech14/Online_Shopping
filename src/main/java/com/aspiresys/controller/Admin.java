@@ -137,7 +137,6 @@ public class Admin {
         } catch (IOException exception) {
             LOGGER.info("Error in Removing User Account "+exception);
         }
-        // Replace the original file with the updated one
         try {
             Files.delete(inputFilePath);
             Files.move(outputFilePath, inputFilePath);
@@ -204,7 +203,7 @@ public class Admin {
                 if (isFileEmpty) {
                     csvPrinter.printRecord("name", "brand", "model", "description", "price", "rating", "stock", "Owner");
                 }
-                csvPrinter.printRecord(ProductName, Brand, Model, ProductDescription, Price, Rating, Number, AccountStatus.AccountStatusNote.getUsername());
+                csvPrinter.printRecord(ProductName, Brand, Model, ProductDescription, Price, Rating, Number, AccountStatus.AccountStatusNote.getUserName());
                 csvPrinter.flush();
                 System.out.println("Data appended to CSV file successfully!");
             }
@@ -308,7 +307,7 @@ public class Admin {
     }
 
     public void logOut() {
-        LOGGER.info("Account Logged out UserName " + AccountStatus.AccountStatusNote.getUsername());
+        LOGGER.info("Account Logged out UserName " + AccountStatus.AccountStatusNote.getUserName());
         System.out.println("You have been logged out from the account");
         new AccountStatus();
         Shopping.getStarted();
@@ -335,7 +334,6 @@ public class Admin {
             for (CSVRecord record : csvParser) {
                 String username = record.get("Username");
                 if (username.equals(usernameToEdit)) {
-                    // Edit the desired fields
                     csvPrinter.printRecord(
                             usernameToEdit,
                             newPassword,
@@ -351,7 +349,6 @@ public class Admin {
         } catch (IOException exception) {
             LOGGER.info("Error in Writing User Details "+exception);
         }
-        // Replace the original file with the updated one
         try {
             Files.delete(inputFilePath);
             Files.move(outputFilePath, inputFilePath);

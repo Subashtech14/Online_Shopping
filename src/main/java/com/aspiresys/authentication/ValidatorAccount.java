@@ -35,12 +35,12 @@ public class ValidatorAccount {
         this.EMAIL=email;
     }
     public  boolean validate()  {
-        boolean email=emailValid();
-        boolean pass=passwordValid();
-        boolean phone=phoneNumberValid();
-        boolean role=roleValid();
-        boolean valid = isValidUsername(USER_NAME);
-        return valid && email && pass && phone && role;
+        boolean emailValidation=emailValid();
+        boolean passwordValidation=passwordValid();
+        boolean phoneNumberValidation=phoneNumberValid();
+        boolean roleValidation=roleValid();
+        boolean validation = isValidUsername(USER_NAME);
+        return validation && emailValidation && passwordValidation && phoneNumberValidation && roleValidation;
 
     }
 

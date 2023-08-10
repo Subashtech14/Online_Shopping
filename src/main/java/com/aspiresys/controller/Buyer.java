@@ -82,7 +82,6 @@ public class Buyer {
         return file.length() == 0;
     }
     public void viewAndBuy(){
-        //new ProductTablePrinter().printProductTable();
         new PrintTable(products).printItems();
          if (!AccountStatus.AccountStatusNote.getStatus()){
              System.out.println("Account is not Logged in \n Please Login or Sign Up to Continue");
@@ -126,7 +125,7 @@ public class Buyer {
         System.out.println("Do you want to Continue Buying Y or N ?");
         option=scanner.next();
         }while (option.equalsIgnoreCase("y"));
-            LOGGER.info("The Products brought by the "+AccountStatus.AccountStatusNote.getUsername()+" \n "+BuyedList.toString());
+            LOGGER.info("The Products brought by the "+AccountStatus.AccountStatusNote.getUserName()+" \n "+BuyedList.toString());
         int total = 0;
             for (Product product:BuyedList){
                 total=total+product.getPrice()*product.getNo();

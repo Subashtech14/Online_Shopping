@@ -5,16 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bdf80f97-2d1a-4dea-8948-c70810fda250" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Online_Shopping_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Online_Shopping_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/aspiresys/Online_Shopping.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/Online_Shopping.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/aspiresys/authentication/Authentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/authentication/Authentication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/aspiresys/authentication/ValidatorAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/authentication/ValidatorAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/aspiresys/controller/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/controller/Admin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/aspiresys/controller/Buyer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/controller/Buyer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/aspiresys/controller/SellerPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/controller/SellerPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/aspiresys/logs/authentication.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/logs/authentication.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/aspiresys/logs/product.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/logs/product.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/aspiresys/model/UserDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/model/UserDetails.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/aspiresys/model/account/AccountStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/model/account/AccountStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/aspiresys/view/PrintTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspiresys/view/PrintTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/aspiresys/controller/Buyer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/aspiresys/controller/Buyer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/aspiresys/view/PrintTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/aspiresys/view/PrintTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/user_details.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/user_details.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +96,7 @@
   </component>
   <component name="RunManager">
     <configuration name="AdminTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Online_Shopping" />
+      <module name="Shopping Application" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.aspiresys.controller.*" />
@@ -107,7 +111,7 @@
       </method>
     </configuration>
     <configuration name="AdminTest.testAddUser_ValidInput_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Online_Shopping" />
+      <module name="Shopping Application" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.aspiresys.controller.*" />
@@ -123,7 +127,7 @@
       </method>
     </configuration>
     <configuration name="ValidatorAccountTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Online_Shopping" />
+      <module name="Shopping Application" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.aspiresys.authentication.*" />
@@ -138,7 +142,7 @@
       </method>
     </configuration>
     <configuration name="ValidatorAccountTest.runTestCase" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Online_Shopping" />
+      <module name="Shopping Application" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.aspiresys.*" />
@@ -154,7 +158,7 @@
       </method>
     </configuration>
     <configuration name="ValidatorAccountTest.testValidAccount" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Online_Shopping" />
+      <module name="Shopping Application" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.aspiresys.authentication.*" />
@@ -165,6 +169,19 @@
       <option name="MAIN_CLASS_NAME" value="com.aspiresys.authentication.ValidatorAccountTest" />
       <option name="METHOD_NAME" value="testValidAccount" />
       <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Shopping Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Shopping Application" />
+      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

@@ -5,7 +5,7 @@
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
       </element>
-      <element id="module-output" name="Online_Shopping" />
+      <element id="module-output" name="Shopping Application" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/jline/jline/3.23.0/jline-3.23.0.jar" path-in-jar="/" />
     </root>
   </artifact>

@@ -40,7 +40,7 @@ public class Authentication {
         try (Reader reader = new FileReader("E:\\Online_Shopping\\src\\main\\resources\\config.properties")) {
             properties.load(reader);
         } catch (IOException exception) {
-            Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, "Can't Read Properties File", exception);
+            Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, "Can't Read Properties File ", exception);
         }
         userFilePath = properties.getProperty("userFile");
     }
@@ -90,8 +90,8 @@ public class Authentication {
                 UserDetails userDetails = new UserDetails(username,password, role);
                 userDetailsMap.put(username, userDetails);
             }
-        } catch (IOException e) {
-            LOGGER.info("Error in Reading User Details"+e.getMessage());
+        } catch (IOException exception) {
+            LOGGER.info("Error in Reading User Details"+exception.getMessage());
         }
 
         return userDetailsMap;
@@ -128,7 +128,6 @@ public class Authentication {
         Path path = get(Authentication.userFilePath);
         try (Writer writer = Files.newBufferedWriter(path, StandardOpenOption.APPEND, StandardOpenOption.CREATE);
              CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT)) {
-
             if (headers != null && headers.length > 0 && Files.size(path) == 0) {
                 csvPrinter.printRecord((Object[]) headers);
             }

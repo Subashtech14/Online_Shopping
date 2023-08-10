@@ -15,7 +15,7 @@ import java.util.logging.SimpleFormatter;
 public class AccountStatus {
     private static final Logger logger = Logger.getLogger(AccountStatus.class.getName());
     private static final String authentication;
-    private static String username;
+    private static String userName;
     private static int status=0;
     static {
         Properties properties = new Properties();
@@ -27,27 +27,25 @@ public class AccountStatus {
         authentication = properties.getProperty("authentication");
         try {
             logger.setUseParentHandlers(false);
-
             File file = new File(authentication);
             boolean append = file.exists();
             FileHandler fileHandler = new FileHandler(authentication, append);
             SimpleFormatter formatter = new SimpleFormatter();
             fileHandler.setFormatter(formatter);
-
             logger.addHandler(fileHandler);
-        } catch (IOException e) {
-            logger.info("Error in Authentication");
+        } catch (IOException exception) {
+            logger.info("Error in Authentication "+exception);
         }
 
     }
-    public AccountStatus(String username, int status) {
-        AccountStatus.username = username;
+    public AccountStatus(String userName, int status) {
+        AccountStatus.userName = userName;
         AccountStatus.status = status;
-        logger.info("Account Logged in UserName " + username);
+        logger.info("Account Logged in userName " + userName);
     }
     public AccountStatus(){
-        logger.info("Account Logged out UserName " + username);
-        AccountStatus.username=null;
+        logger.info("Account Logged out userName " + userName);
+        AccountStatus.userName=null;
         AccountStatus.status=0;
 
     }
@@ -61,8 +59,8 @@ public class AccountStatus {
 
             return status != 0;
         }
-        public static String getUsername(){
-            return username;
+        public static String getUserName(){
+            return userName;
         }
 
     }

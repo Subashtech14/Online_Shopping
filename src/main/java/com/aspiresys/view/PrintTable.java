@@ -81,7 +81,6 @@ public class PrintTable {
             System.out.println("+" + "-".repeat(tableWidth - 2) + "+");
             serialNumber++;
         }
-
         Scanner scanner = new Scanner(System.in);
         System.out.println("Do you want to checkout Y or N ?");
         String option = scanner.nextLine();
@@ -98,9 +97,7 @@ public class PrintTable {
         System.out.println("Choose a payment option: 1 or 2");
         System.out.println("1. Credit Card");
         System.out.println("2. Cash on Delivery");
-
         int paymentOption = scanner.nextInt();
-
         if (paymentOption == 1) {
             payCreditCard();
         } else if (paymentOption == 2) {
@@ -114,13 +111,13 @@ public class PrintTable {
     private void payCashOnDelivery(ArrayList<Product> products) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter your Address: ");
-        String Address= scanner.nextLine();
+        String address= scanner.nextLine();
         int total = 0;
         for (Product product:products){
             total=total+product.getPrice()*product.getNo();
         }
         System.out.println("Please pay the cash on delivery of cash "+total);
-        System.out.println("Your Order Will be delivered at "+Address);
+        System.out.println("Your Order Will be delivered at "+address);
         Shopping.getStarted();
     }
 

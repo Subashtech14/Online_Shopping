@@ -25,8 +25,8 @@ import java.util.logging.SimpleFormatter;
 
 public class SellerPage {
     private static final Logger LOGGER = Logger.getLogger(Admin.class.getName());
-    String ProductName, Brand, Model, ProductDescription;
-    int Price, Rating, Number;
+    String productName, brand, model, productDescription;
+    int price, rating, number;
     private static final String PRODUCT_FILE_PATH;
     private static final String EXCEPTION_FILE_PATH;
     private static final Logger EXCEPTIONS = Logger.getLogger(SellerPage.class.getName());
@@ -79,18 +79,18 @@ public class SellerPage {
     }
 
     private void logOut() {
-        LOGGER.info("Account Logged out UserName " + AccountStatus.AccountStatusNote.getUsername());
+        LOGGER.info("Account Logged out UserName " + AccountStatus.AccountStatusNote.getUserName());
         System.out.println("You have been logged out from the account");
         new AccountStatus();
         Shopping.getStarted();
     }
 
     private void viewProduct() {
-        new PrintUserTable().printTableBasedOnUser(PRODUCT_FILE_PATH, AccountStatus.AccountStatusNote.getUsername());
+        new PrintUserTable().printTableBasedOnUser(PRODUCT_FILE_PATH, AccountStatus.AccountStatusNote.getUserName());
         sellerAccess();
     }
     private void editProduct() {
-        String ownerToEdit = AccountStatus.AccountStatusNote.getUsername();
+        String ownerToEdit = AccountStatus.AccountStatusNote.getUserName();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the Product Name to edit: ");
         String productNameToEdit = scanner.nextLine();
@@ -185,19 +185,19 @@ public class SellerPage {
     public void addProduct() {
     Scanner scanner = new Scanner(System.in);
     System.out.println("Enter the Product Name");
-    ProductName = scanner.nextLine();
+    productName = scanner.nextLine();
     System.out.println("Enter the Product Brand");
-    Brand = scanner.nextLine();
+    brand = scanner.nextLine();
     System.out.println("Enter the Product Model");
-    Model = scanner.nextLine();
+    model = scanner.nextLine();
     System.out.println("Enter the Product Description");
-    ProductDescription = scanner.nextLine();
+    productDescription = scanner.nextLine();
     System.out.println("Enter the Product Price in  R.S ");
-    Price = scanner.nextInt();
+    price = scanner.nextInt();
     System.out.println("Enter the Rating");
-    Rating = scanner.nextInt();
+    rating = scanner.nextInt();
     System.out.println("Enter the Quantity");
-    Number = scanner.nextInt();
+    number = scanner.nextInt();
     scanner.nextLine();
 
     try {
@@ -209,7 +209,7 @@ public class SellerPage {
                 csvPrinter.printRecord("name", "brand", "model", "description", "price", "rating", "stock", "Owner");
             }
 
-            csvPrinter.printRecord(ProductName, Brand, Model, ProductDescription, Price, Rating, Number, AccountStatus.AccountStatusNote.getUsername());
+            csvPrinter.printRecord(productName, brand, model, productDescription, price, rating, number, AccountStatus.AccountStatusNote.getUserName());
             csvPrinter.flush();
             System.out.println("Data appended to CSV file successfully!");
         }

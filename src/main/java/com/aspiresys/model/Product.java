@@ -1,95 +1,95 @@
 package com.aspiresys.model;
 
 public class Product{
-        String ProductName, Brand, Model, ProductDescription,Owner;
-        int Price, Rating, No;
+        String productName, brand, model, productDescription,owner;
+        int price, rating, no;
         public  Product(String ProductName, String Brand, String Model, String ProductDescription, int Price, int Rating, int No, String Owner) {
 
-                this.ProductName = ProductName;
-                this.Brand = Brand;
-                this.Model = Model;
-                this.ProductDescription = ProductDescription;
-                this.Price = Price;
-                this.Rating = Rating;
-                this.No = No;
-                this.Owner = Owner;
+                this.productName = ProductName;
+                this.brand = Brand;
+                this.model = Model;
+                this.productDescription = ProductDescription;
+                this.price = Price;
+                this.rating = Rating;
+                this.no = No;
+                this.owner = Owner;
         }
 
     public String getProductName() {
-        return ProductName;
+        return productName;
     }
 
     public void setProductName(String productName) {
-        ProductName = productName;
+        this.productName = productName;
     }
 
     public String getBrand() {
-        return Brand;
+        return brand;
     }
 
     public void setBrand(String brand) {
-        Brand = brand;
+        this.brand = brand;
     }
 
     public String getModel() {
-        return Model;
+        return model;
     }
 
     public void setModel(String model) {
-        Model = model;
+        this.model = model;
     }
 
     public String getProductDescription() {
-        return ProductDescription;
+        return productDescription;
     }
 
     public void setProductDescription(String productDescription) {
-        ProductDescription = productDescription;
+        this.productDescription = productDescription;
     }
 
     public String getOwner() {
-        return Owner;
+        return owner;
     }
 
     public void setOwner(String owner) {
-        Owner = owner;
+        this.owner = owner;
     }
 
     public int getPrice() {
-        return Price;
+        return price;
     }
 
     public void setPrice(int price) {
-        Price = price;
+        this.price = price;
     }
 
     public int getRating() {
-        return Rating;
+        return rating;
     }
 
     public void setRating(int rating) {
-        Rating = rating;
+        this.rating = rating;
     }
 
     public int getNo() {
-        return No;
+        return no;
     }
 
     public void setNo(int no) {
-        No = no;
+        this.no = no;
     }
 
     @Override
     public String toString() {
         return "Product{" +
-                "ProductName='" + ProductName + '\'' +
-                ", Brand='" + Brand + '\'' +
-                ", Model='" + Model + '\'' +
-                ", ProductDescription='" + ProductDescription + '\'' +
-                ", Owner='" + Owner + '\'' +
-                ", Price=" + Price +
-                ", Rating=" + Rating +
-                ", No=" + No +
+                "ProductName='" + productName + '\'' +
+                ", Brand='" + brand + '\'' +
+                ", Model='" + model + '\'' +
+                ", ProductDescription='" + productDescription + '\'' +
+                ", Owner='" + owner + '\'' +
+                ", Price=" + price +
+                ", Rating=" + rating +
+                ", No=" + no +
                 '}';
     }
 }
